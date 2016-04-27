@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>{{ firebase.title }}</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,600,700' rel='stylesheet' type='text/css'>
+		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    </head>
+    <body>
+	    
+	    <div class="row">
+		    <div class="col-sm-3 column">
+			    <div class="about">
+					<p class="about">{{ firebase.bio }}</p>
+			    </div>
+			    <div class="training">
+				    {% for location in firebase.locations %}
+						<h2>{{ location.name }}</h2>
+						<p class="description">{{ location.description }}</p>
+						<p><a class="btn btn-default" href="{{ location.url }}" target="_blank">Kenneth's <b>{{ location.name }}</b> Schedule</a></p>
+					{% endfor %}
+			    </div>
+			    <div class="links">
+					<h2>Follow Kenneth</h2>
+				    {% for link in firebase.follow %}
+						<span class="social">
+							<a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.icon }} fa-3x" aria-hidden="true"></i></a>
+						</span>
+					{% endfor %}
+			    </div>
+		    </div>
+		    <div class="col-sm-3 col-sm-offset-6 column column-right">
+			    <div class="press">
+					<h2>Press</h2>
+				    {% for article in firebase.press %}
+						<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
+						<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
+					{% endfor %}
+			    </div>
+				<div class="testimonials">
+					<h2>From Rate Your Burn...</h2>
+					<p>
+						<i class="fa fa-quote-left fa-2x fa-pull-left" aria-hidden="true"></i>
+						{{ firebase.testimonials[2] }}
+					</p>
+				</div>
+				<div class="instagram">
+					<h2>Kenneth on Instagram</h2>
+					{{ firebase.instagram_widget | safe }}
+				</div>
+		    </div>
+	    </div>
+    </body>
+</html>
