@@ -39,3 +39,5 @@ h2 { font-size: 14px; font-weight: 500; font-style: normal; letter-spacing: 2px;
 .instagram		{  }
 
 .btn		{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; }
+
+body.admin	{ background: #fff; }
