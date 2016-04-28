@@ -96,10 +96,46 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
     var fb = $firebase(new Firebase(contentUrl));
     $scope.content = fb.$asObject();
 
-    $scope.addLocation = function() {
+    $scope.editPress = function(key) {
+	    var l = $scope.content.press[key];
+	    l.key = key;
+	    $scope.press = l;
+	    $('#pressModal .modal-title').text('Edit a Press Item');
+		$('#pressModal').modal('show');
+    }
+
+    $scope.addPress = function() {
+	    $('#pressModal .modal-title').text('Add a Press Item');
+	    $scope.press = null;
+		$('#pressModal').modal('show');
+    }
+   
+   	$scope.savePress = function() {
+	   $scope.content.press[$scope.press.key] = { title: $scope.press.title, description: $scope.press.description, url: $scope.press.url, image_url: $scope.press.image_url }
+   	} 
+   
+    $scope.removePress = function(press) {
+		delete $scope.content.press[press];
+    }
+
+    $scope.editLocation = function(key) {
+	    var l = $scope.content.locations[key];
+	    l.key = key;
+	    $scope.location = l;
+	    $('#locationModal .modal-title').text('Edit a Location');
 		$('#locationModal').modal('show');
     }
-    
+
+    $scope.addLocation = function() {
+	    $('#locationModal .modal-title').text('Add a Location');
+	    $scope.location = null;
+		$('#locationModal').modal('show');
+    }
+   
+   	$scope.saveLocation = function() {
+	   $scope.content.locations[$scope.location.key] = { name: $scope.location.name, description: $scope.location.description, url: $scope.location.url }
+   	} 
+   
     $scope.removeLocation = function(location) {
 		delete $scope.content.locations[location];
     }
