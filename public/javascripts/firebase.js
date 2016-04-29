@@ -1,37 +1,6 @@
 angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
  
-.constant('fbUrl', 'https://kendorphins.firebaseio.com')
-
-.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-        .success(function(){
-        })
-        .error(function(){
-        });
-    }
-}])
-
-.directive('fileModel', ['$parse', function ($parse) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileModel);
-            var modelSetter = model.assign;
-            
-            element.bind('change', function(){
-                scope.$apply(function(){
-                    modelSetter(scope, element[0].files[0]);
-                });
-            });
-        }
-    };
-}])
+.constant('fbUrl', 'https://kendorphins.firebaseio.com/')
 
 .directive('customOnChange', function() {
   return {
@@ -56,28 +25,44 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 })
 
 .controller('LoginCtrl', 
-  function($scope, $location, $routeParams) {
+  function($scope, $location, $routeParams, fbUrl) {
 		  
-	var ref = new Firebase("https://kendorphins.firebaseio.com");
+	var ref = new Firebase(fbUrl);
 	var auth = ref.getAuth();
-	console.log(auth);
 	
 	if (auth !== null) {
-		$location.path('editor');
-	}
-
-	$scope.logout = function() {
-		ref.unauth();
+		
+		ref.once("value", function(snapshot) {
+			if (snapshot.child("users").child("admin").child(auth.uid).exists()) {
+				$location.path('editor');
+			} else {
+				console.log('no');
+			}
+		});
+		
+		//$location.path('editor');
 	}
 
 	$scope.getFacebookAuth = function() {
 
-		ref.authWithOAuthRedirect("facebook", function(error, authData) {
+		ref.authWithOAuthPopup("google", function(error, authData) {
 		  if (error) {
 		    console.log("Login Failed!", error);
 		  } else {
-		    console.log("Authenticated successfully with payload:", authData);
+			  
+			ref.once("value", function(snapshot) {
+				if (snapshot.child("users").child("admin").child(authData.uid).exists()) {
+		  			$scope.$apply(
+		  				function() { $location.path('editor'); }
+		  			)
+				} else {
+					console.log('no');
+				}
+			});
+
 		  }
+		}, {
+		  scope: "email" // the permissions requested
 		});		
 	
 	    return false;
@@ -87,11 +72,10 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 })
 
 .controller('EditCtrl', 
-  function($scope, $firebase, $firebaseAuth, $routeParams, fbUrl) {
+  function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
 
     var ref = new Firebase(fbUrl);
-    var auth = $firebaseAuth(ref);
-    
+
     var contentUrl = fbUrl;
     var fb = $firebase(new Firebase(contentUrl));
     $scope.content = fb.$asObject();
@@ -139,13 +123,17 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
     $scope.removeLocation = function(location) {
 		delete $scope.content.locations[location];
     }
-
-/* 
-    $scope.save = function() {
-      $scope.content.$save();
-      setTimeout(function() { location.reload(); }, 1000);
-      setTimeout(function() { location.href = '/' + $scope.content.category + '/' + $scope.content.slug; }, 500);
+    
+    $scope.logout = function() {
+		var ref = new Firebase(fbUrl);
+		ref.unauth();
+		$location.path("/");
+    }
+ 
+    $scope.save = function() {	    
+        $scope.content.$save();
+		$location.path("/");
     };
-*/    
+
   }
 );
