@@ -6,6 +6,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var firebase = require("firebase");
+var markdown = require( "markdown");
+var extras = require('swig-extras');
+extras.useFilter(swig, 'markdown');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

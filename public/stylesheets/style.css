@@ -1,5 +1,5 @@
 html { 
-  background: url(/images/kenneth-ferrer-tank.jpg) no-repeat center top fixed; 
+  background: url(/images/kenneth-ferrer.jpg) no-repeat center top fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -15,6 +15,11 @@ html {
 	.column	{ background: none !important; }
 }
 
+@media (max-width: 768px) {
+	.about	{ margin-top: 0 !important; padding-top: 20px; }
+}
+
+
 body {
   font: 18px "Open Sans Condensed", Helvetica, Arial, sans-serif;
   color: #eee;
@@ -25,15 +30,17 @@ a {
   color: #eee;
 }
 
-h1 { font-size: 64px; font-weight: 500; font-style: italic; letter-spacing: 1px; }
+a:hover		{ color: #8395a3; }
+
+h1 { font-size: 60px; font-weight: 100; font-style: italic; letter-spacing: 1px; }
 h2 { font-size: 14px; font-weight: 500; font-style: normal; letter-spacing: 2px; text-transform: uppercase; margin-top: 2em; }
 
 .row		{ margin: 0; padding-bottom: 40px; overflow: hidden; }
-.column		{ background: rgba(0,0,0,0.3); padding-bottom: 100%; margin-bottom: -100%; }
+.column		{ background: rgba(0,0,0,0.7); padding-bottom: 100%; margin-bottom: -100%; }
 
 .about		{ font-size: 28px; font-style: italic; margin-top: 20px; }
 .social		{ margin: 0 20px 20px 0; }
-.press-title	{ font-style: normal; font-size: 16px; font-weight: 400; margin: 4px 0; }
+.press-title	{ font-style: normal; font-size: 16px; font-weight: 600; margin: 4px 0; }
 .training h2	{ font-size: 18px; font-weight: 800; }
 .training .description	{ font-size: 15px; }
 .instagram		{  }
