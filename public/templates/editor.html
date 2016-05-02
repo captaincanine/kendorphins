@@ -1,175 +1,179 @@
-<form name="form-editor" class="cms form-horizontal">
+<form name="myEditor" class="cms form-horizontal" novalidate>
 
-  <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-    <label class="col-sm-2 control-label">Site Title</label>
-    <div class="col-sm-10">
-	    <input type="text" name="title" ng-model="content.title" class="form-control" required>
-	    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-    </div>
-  </div>
+	<div class="form-group" ng-class="{ 'has-error': myEditor.title.$invalid && !myEditor.title.$pristine }">
+		<label class="col-sm-2 control-label">Site Title</label>
+		<div class="col-sm-10">
+			<input type="text" name="title" ng-model="content.title" class="form-control" required>
+			<span ng-show="myEditor.title.$error.required && !myEditor.title.$pristine" class="help-block">This field is required</span>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{ 'has-error': myEditor.bio.$invalid && !myEditor.bio.$pristine}">
+		<label class="col-sm-2 control-label">Short Bio</label>
+		<div class="col-sm-10">
+			<textarea ng-model="content.bio" required name="bio" rows="5" class="form-control"></textarea>
+			<span ng-show="myEditor.bio.$error.required && !myEditor.bio.$pristine" class="help-block">This field is required</span>
+		</div>
+	</div>
 
-  <div class="form-group" ng-class="{error: form-editor.bio.$invalid && !form-editor.bio.$pristine}">
-    <label class="col-sm-2 control-label">Short Bio</label>
-    <div class="col-sm-10">
-        <textarea ng-model="content.bio" required name="bio" rows="5" class="form-control"></textarea>
-	    <span ng-show="form-editor.bio.$error.required && !form-editor.bio.$pristine" class="help-inline">Required {{form-editor.bio.$pristine}}</span>
-    </div>
-  </div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Training Locations</label>
+		<div class="col-sm-10">
+			<table class="table table-hover table-condensed">
+				<tr ng-repeat="(key, item) in content.locations">
+					<td class="cell-name">{{ item.name }}</td>
+					<td align="right">
+						<button class="btn btn-danger" ng-click="removeLocation(key)"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary" ng-click="editLocation(key)"><i class="fa fa-pencil"></i></button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><button class="btn btn-primary" ng-click="addLocation()"><i class="fa fa-plus"></i></button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-  <div class="form-group" ng-class="{error: form-editor.locations.$invalid && !form-editor.locations.$pristine}">
-    <label class="col-sm-2 control-label">Training Locations</label>
-    <div class="col-sm-10">
-	    <table class="table table-hover table-condensed">
-			<tr ng-repeat="(key, item) in content.locations">
-				<td class="cell-name">{{ item.name }}</td>
-				<td align="right">
-					<button class="btn btn-danger" ng-click="removeLocation(key)"><i class="fa fa-trash"></i></button>
-					<button class="btn btn-primary" ng-click="editLocation(key)"><i class="fa fa-pencil"></i></button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right"><button class="btn btn-primary" ng-click="addLocation()"><i class="fa fa-plus"></i></button></td>
-			</tr>
-		</table>
-	    <span ng-show="form-editor.locations.$error.required && !form-editor.locations.$pristine" class="help-inline">Required {{form-editor.locations.$pristine}}</span>
-    </div>
-  </div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Press</label>
+		<div class="col-sm-10">
+			<table class="table table-hover table-condensed">
+				<tr ng-repeat="(key, item) in content.press">
+					<td class="cell-name">{{ item.title }}</td>
+					<td align="right">
+						<button class="btn btn-danger" ng-click="removePress(key)"><i class="fa fa-trash"></i></button>
+						<button class="btn btn-primary" ng-click="editPress(key)"><i class="fa fa-pencil"></i></button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right"><button class="btn btn-primary" ng-click="addPress()"><i class="fa fa-plus"></i></button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-  <div class="form-group" ng-class="{error: form-editor.press.$invalid && !form-editor.press.$pristine}">
-    <label class="col-sm-2 control-label">Press</label>
-    <div class="col-sm-10">
-	    <table class="table table-hover table-condensed">
-			<tr ng-repeat="(key, item) in content.press">
-				<td class="cell-name">{{ item.title }}</td>
-				<td align="right">
-					<button class="btn btn-danger" ng-click="removePress(key)"><i class="fa fa-trash"></i></button>
-					<button class="btn btn-primary" ng-click="editPress(key)"><i class="fa fa-pencil"></i></button>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="right"><button class="btn btn-primary" ng-click="addPress()"><i class="fa fa-plus"></i></button></td>
-			</tr>
-		</table>
-	    <span ng-show="form-editor.press.$error.required && !form-editor.press.$pristine" class="help-inline">Required {{form-editor.press.$pristine}}</span>
-    </div>
-  </div>
+	<div class="form-group" ng-class="{ 'has-error': myEditor.testimonial.$invalid && !myEditor.testimonial.$pristine}">
+		<label class="col-sm-2 control-label">Testimonial</label>
+		<div class="col-sm-10">
+			<textarea ng-model="content.testimonials[0]" required name="testimonial" rows="4" class="form-control"></textarea>
+			<span ng-show="myEditor.testimonial.$error.required && !myEditor.testimonial.$pristine" class="help-block">This field is required</span>
+		</div>
+	</div>
 
-  <div class="form-group" ng-class="{error: form-editor.testimonials[0].$invalid && !form-editor.instagram_widget.$pristine}">
-    <label class="col-sm-2 control-label">Testimonial</label>
-    <div class="col-sm-10">
-        <textarea ng-model="content.testimonials[0]" required name="testimonials[0]" rows="4" class="form-control"></textarea>
-	    <span ng-show="form-editor.testimonials[0].$error.required && !form-editor.testimonials[0].$pristine" class="help-inline">Required {{form-editor.testimonials[0].$pristine}}</span>
-    </div>
-  </div>
+	<div class="form-group" ng-class="{'has-error': myEditor.instagram_widget.$invalid && !myEditor.instagram_widget.$pristine}">
+		<label class="col-sm-2 control-label">Instagram Widget Code</label>
+		<div class="col-sm-10">
+			<textarea ng-model="content.instagram_widget" required name="instagram_widget" rows="4" class="form-control"></textarea>
+			<span ng-show="myEditor.instagram_widget.$error.required && !myEditor.instagram_widget.$pristine" class="help-block">This field is required</span>
+		</div>
+	</div>
 
-  <div class="form-group" ng-class="{error: form-editor.instagram_widget.$invalid && !form-editor.instagram_widget.$pristine}">
-    <label class="col-sm-2 control-label">Instagram Widget Code</label>
-    <div class="col-sm-10">
-        <textarea ng-model="content.instagram_widget" required name="instagram_widget" rows="4" class="form-control"></textarea>
-	    <span ng-show="form-editor.instagram_widget.$error.required && !form-editor.instagram_widget.$pristine" class="help-inline">Required {{form-editor.instagram_widget.$pristine}}</span>
-    </div>
-  </div>
+	<br>
+	
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2">
+			<button ng-click="save()" ng-disabled="myEditor.$invalid" class="btn btn-primary">Save</button>
+			<a href="/" class="btn">Cancel</a>
+			<button ng-click="logout()" class="btn btn-default pull-right">Logout</button>
+		</div>
+	</div>
 
-  <br>
-  
-  <div class="row">
-	  <div class="col-sm-10 col-sm-offset-2">
-		  <button ng-click="save()" ng-disabled="form-editor.$invalid" class="btn btn-primary">Save</button>
-		  <a href="/" class="btn">Cancel</a>
-        <button type="button" ng-click="logout()" class="btn btn-default pull-right">Logout</button>
-	  </div>
-  </div>
+</form>
 
+<form name="locationEditor" class="cms form-horizontal" novalidate>
+	
 	<div id="locationModal" class="modal fade" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Add a Location</h4>
-	      </div>
-	      <div class="modal-body">
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Key</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="location.key" ng-model="location.key" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Name</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="location.name" ng-model="location.name" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Description</label>
-			    <div class="col-sm-10">
-				    <textarea ng-model="location.description" required name="location.description" rows="3" class="form-control"></textarea>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Url</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="location.url" ng-model="location.url" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" ng-click="saveLocation()" data-dismiss="modal" class="btn btn-primary">Done</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Add a Location</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group" ng-class="{ 'has-error': locationEditor.lKey.$invalid && !locationEditor.lKey.$pristine}">
+						<label class="col-sm-2 control-label">Key</label>
+						<div class="col-sm-10">
+							<input type="text" name="lKey" ng-model="location.key" class="form-control" required>
+							<span ng-show="locationEditor.lKey.$error.required && !locationEditor.lKey.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': locationEditor.lName.$invalid && !locationEditor.lName.$pristine}">
+						<label class="col-sm-2 control-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="lName" ng-model="location.name" class="form-control" required>
+							<span ng-show="locationEditor.lName.$error.required && !locationEditor.lName.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': locationEditor.lDescription.$invalid && !locationEditor.lDescription.$pristine}">
+						<label class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-10">
+							<textarea ng-model="location.description" required name="lDescription" rows="3" class="form-control"></textarea>
+							<span ng-show="locationEditor.lDescription.$error.required && !locationEditor.lDescription.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': locationEditor.lUrl.$invalid && !locationEditor.lUrl.$pristine}">
+						<label class="col-sm-2 control-label">Url</label>
+						<div class="col-sm-10">
+							<input type="text" name="lUrl" ng-model="location.url" class="form-control" required>
+							<span ng-show="locationEditor.lUrl.$error.required && !locationEditor.lUrl.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" ng-click="saveLocation()" data-dismiss="modal" class="btn btn-primary" ng-disabled="locationEditor.$invalid">Done</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	
+</form>
+
+<form name="pressEditor" class="cms form-horizontal" novalidate>
 
 	<div id="pressModal" class="modal fade" tabindex="-1" role="dialog">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Add a Press Item</h4>
-	      </div>
-	      <div class="modal-body">
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Key</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="press.key" ng-model="press.key" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Title</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="press.title" ng-model="press.title" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Article Url</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="press.url" ng-model="press.url" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-	          <div class="form-group" ng-class="{error: form-editor.title.$invalid && !form-editor.title.$pristine}">
-			    <label class="col-sm-2 control-label">Image Url</label>
-			    <div class="col-sm-10">
-				    <input type="text" name="press.image_url" ng-model="press.image_url" class="form-control" required>
-				    <span ng-show="form-editor.title.$error.required && !form-editor.title.$pristine" class="help-inline">Required {{form-editor.title.$pristine}}</span>
-			    </div>
-			  </div>
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" ng-click="savePress()" data-dismiss="modal" class="btn btn-primary">Done</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Add a Press Item</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group" ng-class="{ 'has-error': pressEditor.pKey.$invalid && !pressEditor.pKey.$pristine}">
+						<label class="col-sm-2 control-label">Key</label>
+						<div class="col-sm-10">
+							<input type="text" name="pKey" ng-model="press.key" class="form-control" required>
+							<span ng-show="pressEditor.pKey.$error.required && !pressEditor.pKey.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': pressEditor.pTitle.$invalid && !pressEditor.pTitle.$pristine}">
+						<label class="col-sm-2 control-label">Title</label>
+						<div class="col-sm-10">
+							<input type="text" name="pTitle" ng-model="press.title" class="form-control" required>
+							<span ng-show="pressEditor.pTitle.$error.required && !pressEditor.pTitle.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': pressEditor.pUrl.$invalid && !pressEditor.pUrl.$pristine}">
+						<label class="col-sm-2 control-label">Article Url</label>
+						<div class="col-sm-10">
+							<input type="text" name="pUrl" ng-model="press.url" class="form-control" required>
+							<span ng-show="pressEditor.pUrl.$error.required && !pressEditor.pUrl.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error': pressEditor.pImageUrl.$invalid && !pressEditor.pImageUrl.$pristine}">
+						<label class="col-sm-2 control-label">Image Url</label>
+						<div class="col-sm-10">
+							<input type="text" name="pImageUrl" ng-model="press.image_url" class="form-control" required>
+							<span ng-show="pressEditor.pImageUrl.$error.required && !pressEditor.pImageUrl.$pristine" class="help-block">This field is required</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" ng-click="savePress()" data-dismiss="modal" class="btn btn-primary" ng-disabled="pressEditor.$invalid">Done</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 
 </form>

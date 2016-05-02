@@ -12,7 +12,7 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
   };
 })
 
-.config(function($routeProvider) {
+.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/editor', {
       controller:'EditCtrl',
@@ -21,7 +21,11 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
     .when('/', {
       controller:'LoginCtrl',
       templateUrl:'/templates/login.html'
-    })
+    });
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: true
+	});
 })
 
 .controller('LoginCtrl', 
@@ -35,12 +39,28 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 		ref.once("value", function(snapshot) {
 			if (snapshot.child("users").child("admin").child(auth.uid).exists()) {
 				$location.path('editor');
-			} else {
-				console.log('no');
 			}
 		});
 		
 		//$location.path('editor');
+	}
+	
+	$scope.register = function() {
+
+		ref.authWithOAuthPopup("google", function(error, authData) {
+		  if (error) {
+		    console.log("Login Failed!", error);
+		  } else {
+			console.log(authData);
+			ref.child('users/requests').push(authData);
+			$('.info').append('<div class="alert alert-success" role="alert">Thank you. An administrator will contact you when you have been approved for access.</div>');
+		  }
+		}, {
+		  scope: "email" // the permissions requested
+		});		
+	
+	    return false;
+		
 	}
 
 	$scope.getFacebookAuth = function() {
@@ -56,7 +76,7 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 		  				function() { $location.path('editor'); }
 		  			)
 				} else {
-					console.log('no');
+					$('.info').append('<div class="alert alert-warning" role="alert">You must register with the site and be approved to login.</div>');
 				}
 			});
 
