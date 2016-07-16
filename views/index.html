@@ -1,4 +1,4 @@
-<html style="background-image: url(/images/{{ firebase.image.src }})">
+<html ng-app="contact" lang="en">
     <head>
 	    
         <meta charset="utf-8">
@@ -9,72 +9,203 @@
 		<meta property="og:type"               content="website" />
 		<meta property="og:title"              content="{{ firebase.title }}" />
 		<meta property="og:description"        content="{{ firebase.metabio }}" />
-		<meta property="og:image"              content="http://kendorphins.com/images/{{ firebase.image.src }}" />	    
+		<meta property="og:image"              content="http://kendorphins.com/images/{{ firebase.image.src }}" />
 
         <title>{{ firebase.title }}</title>
 
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
 		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>  
+		<script src="/javascripts/contact.js"></script>
+		
+		<script src="/javascripts/angular-recaptcha.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+		
 		<script>
 
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
+	
 		  ga('create', 'UA-77013063-1', 'auto');
 		  ga('send', 'pageview');
 		
 		</script>
+
+		<base href="/">
+
     </head>
     <body>
 	    
-	    <div class="row">
-		    <div class="col-sm-3 column">
-			    <div class="about">
-					{{ firebase.bio | markdown }}
-			    </div>
-			    <div class="training">
-				    {% for location in firebase.locations %}
-						<h2>{{ location.name }}</h2>
-						<p class="description">{{ location.description }}</p>
-						<p><a class="btn btn-default" href="{{ location.url }}" target="_blank">Kenneth's <b>{{ location.name }}</b> Schedule</a></p>
-					{% endfor %}
-			    </div>
-			    <div class="links">
-					<h2>Follow Kenneth</h2>
-				    {% for link in firebase.follow %}
-						<span class="social">
-							<a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.icon }} fa-3x" aria-hidden="true"></i></a>
-						</span>
-					{% endfor %}
-			    </div>
-		    </div>
-		    <div class="col-sm-3 col-sm-offset-6 column column-right">
-			    <div class="press">
-					<h2>Press</h2>
-				    {% for article in firebase.press %}
-						<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
-						<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
-					{% endfor %}
-			    </div>
-				<div class="testimonials">
-					<h2>From Rate Your Burn...</h2>
-					<p>
-						<i class="fa fa-quote-left fa-2x fa-pull-left" aria-hidden="true"></i>
-						{{ firebase.testimonials[0] }}
-					</p>
+	    <nav class="navbar navbar-default navbar-static-top blueback">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="#">Kenneth Ferrer</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#training">Training</a></li>
+					<li><a href="#flywheel">FlyWheel</a></li>
+					<li><a href="#cpx">CPX</a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		
+		<div class="container-fluid">
+			<div class="row greyback">
+				<div class="col-sm-4">
+					<img src="/images/kenneth-ferrer-tank-sm.jpg" class="img-responsive" />
 				</div>
-				<div class="instagram">
-					<h2>Kenneth on Instagram</h2>
-					{{ firebase.instagram_widget | safe }}
+				<div class="col-sm-8">
+					<h1>
+						<div><b>Plan</b> with your <b>head</b>,</div>
+						<div><b>Lead</b> with your <b>heart</b></div>
+					</h1>
+					<div class="about">
+						{{ firebase.bio | markdown }}
+				    </div>
+					<div class="instagram">
+						{{ firebase.instagram_widget | safe }}
+					</div>
 				</div>
-		    </div>
-	    </div>
+			</div>
+			
+			<div class="row blueback training" id="training" ng-controller="contactCtrl as ctrl" recaptcha-key="{{ recaptcha_key }}">
+				<div class="col-xs-12 gradient-top"></div>
+				
+			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/bicep-curl.png" class="img-responsive" /></div>
+			    <div class="col-sm-9">
+				    <div class="info">
+					    <h2>{{ firebase.locations.training.name }}</h2>
+						<p class="description">{{ firebase.locations.training.description }}</p>
+						<p><button type="button" class="btn btn-default btn-lg" ng-click="ctrl.showContact()">Contact Kenneth About <b>Personal Training</b></button></p>
+				    </div>
+			    </div>
+	
+				<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Contact Kenneth</h4>
+				      </div>
+				      <div class="modal-body" ng-show="ctrl.mode != 'thanks'">
+						<form name="contactForm">
+						  <div class="form-group">
+						    <label for="contactName">Your Name</label>
+						    <input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
+						  </div>
+						  <div class="form-group">
+						    <label for="contactEmail">Email address</label>
+						    <input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
+						  </div>
+						  <div class="form-group">
+						    <label for="contactNote">Note (optional)</label>
+						    <textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
+						  </div>
+						  <div vc-recaptcha key="ctrl.publicKey"></div>
+						</form>  
+				      </div>
+				      <div class="modal-body" ng-show="ctrl.mode == 'thanks'">
+					      <h3>Thanks for reaching out. I'll get back to you shortly.</h3>
+				      </div>
+				      <div class="modal-footer" ng-show="ctrl.mode != 'thanks'">
+				        <button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid">Send</button>
+				      </div>
+				      <div class="modal-footer" ng-show="ctrl.mode == 'thanks'">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+
+	
+				<div class="col-xs-12 gradient-bottom"></div>
+			</div>
+			
+			<div class="row greyback training" id="flywheel">
+			    <div class="col-sm-9">
+				    <div class="info">
+					    <h2>{{ firebase.locations.flywheel.name }}</h2>
+						<p class="description">{{ firebase.locations.flywheel.description }}</p>
+						<p><a class="btn btn-default" href="{{ firebase.locations.flywheel.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.flywheel.name }}</b> Schedule</a></p>
+				    </div>
+			    </div>
+			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/cycle.png" class="img-responsive" /></div>
+			</div>
+			
+			<div class="row blueback training" id="cpx">
+				<div class="col-xs-12 gradient-top"></div>
+				
+			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/kettle-bells.png" class="img-responsive" /></div>
+			    <div class="col-sm-9">
+				    <div class="info">
+					    <h2>{{ firebase.locations.cpx.name }}</h2>
+						<p class="description">{{ firebase.locations.cpx.description }}</p>
+						<p><a class="btn btn-default" href="{{ firebase.locations.cpx.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.cpx.name }}</b> Schedule</a></p>
+				    </div>
+			    </div>
+	
+				<div class="col-xs-12 gradient-bottom"></div>
+			</div>
+			
+			<div class="row greyback">
+				<div class="col-md-8">
+					<div class="info">
+						<h2>From <i>Rate Your Burn</i>...</h2>
+						{% for testimonial in firebase.testimonials %}
+						<p>
+							<i class="fa fa-quote-left fa-lg fa-pull-left" aria-hidden="true"></i>
+							<div class="testimonial">{{ testimonial }}</div>
+						</p>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="info">
+						<h2>Press</h2>
+					    {% for article in firebase.press %}
+							<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
+							<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
+							<div class="publisher">@NEWNOWNEXT</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			
+			<div class="row blueback">
+				<div class="col-xs-12 gradient-top"></div>
+				<div class="col-xs-12">
+				    <div class="links">
+						<h2>Follow Kenneth</h2>
+					    {% for link in firebase.follow %}
+							<span class="social">
+								<a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.icon }} fa-3x" aria-hidden="true"></i></a>
+							</span>
+						{% endfor %}
+				    </div>
+				</div>
+			</div>
+
+		</div><!-- /.container-collapse -->
+
     </body>
 </html>

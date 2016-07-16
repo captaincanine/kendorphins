@@ -1,28 +1,38 @@
 html { 
-  background: url(/images/kenneth-ferrer.jpg) no-repeat center top fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-@media (max-width: 321px) {
+@media (max-width: 320px) {
+	.navbar-brand	{ font-size: 20px !important; }
 	.btn	{ font-size: 12px !important; }
+	.info	{ margin: 1em 0 !important; }
+	h2		{ margin-top: 0 !important; font-size: 18px; }
 }
 
-@media (max-width: 481px) {
-	.row	{ background: rgba(0,0,0,0.3); }
-	.column	{ background: none !important; }
+@media (max-width: 480px) {
+	.navbar .container-fluid		{ padding: 8px 20px !important; }
 }
 
 @media (max-width: 768px) {
-	.about	{ margin-top: 0 !important; padding-top: 20px; font-size: 24px !important; }
+	h1								{ font-size: 32px !important; }
+	.navbar .container-fluid		{ padding: 8px 20px !important; }
+	.icon-action img	{ padding: 20px !important; }
+	.about				{ font-size: 16px !important; }
+}
+
+@media (max-width: 1100px) {
+	h1								{ font-size: 28px !important; }
 }
 
 
+
+
 body {
-  font: 18px "Open Sans Condensed", Helvetica, Arial, sans-serif;
-  color: #eee;
+  font: 18px "Open Sans", Helvetica, Arial, sans-serif;
+  color: #f2f2f2;
   background: transparent;
 }
 
@@ -30,21 +40,57 @@ a {
   color: #eee;
 }
 
+a b	{ white-space: nowrap; }
+
+button:focus { outline:0 !important; }
+
+.blueback	{ background: #5c7a99; }
+.greyback	{ background: #1f252a; }
+
 a:hover		{ color: #8395a3; }
 
-h1 { font-size: 60px; font-weight: 100; font-style: italic; letter-spacing: 1px; }
-h2 { font-size: 14px; font-weight: 500; font-style: normal; letter-spacing: 2px; text-transform: uppercase; margin-top: 2em; }
+h1 { font-size: 48px; font-weight: 300; text-transform: uppercase; text-align: center; margin: 1em 40px; }
+h2 { font-size: 24px; font-weight: 800; text-transform: uppercase; margin-top: 2em; }
+h1 b	{ font-weight: 800; }
 
-.row		{ margin: 0; padding-bottom: 40px; overflow: hidden; }
-.column		{ background: rgba(0,0,0,0.7); padding-bottom: 100%; margin-bottom: -100%; }
-
-.about		{ font-size: 28px; font-style: italic; margin-top: 20px; }
+.about		{ font-size: 18px; margin: 20px; }
 .social		{ margin: 0 20px 20px 0; }
-.press-title	{ font-style: normal; font-size: 16px; font-weight: 600; margin: 4px 0; }
-.training h2	{ font-size: 18px; font-weight: 800; }
+.press-title	{ font-style: normal; font-size: 18px; line-height: 1.2em; font-weight: 400; margin: 8px 0 0; }
+.publisher		{ font-size: 11px; font-weight: 300; margin-top: 6px; }
 .training .description	{ font-size: 15px; }
-.instagram		{  }
+.instagram		{ margin: 20px; }
+.testimonial	{ font-size: 16px; margin: 0 0 2em; }
 
-.btn		{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; }
+.links			{ margin: 20px 0 40px; text-align: center; }
+.links h2		{ display: inline; font-weight: 300; letter-spacing: 2px; padding-right: 20px; line-height: 200%; }
+
+.info			{ margin: 40px 40px 60px; }
+
+.btn		{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; margin: 20px 0; }
 
 body.admin	{ background: #fff; }
+
+.navbar				{ color: #f2f2f2 !important; margin-bottom: 0 !important; }
+.navbar	a			{ color: #f2f2f2 !important; text-transform: uppercase; font-weight: 300; font-size: 24px; }
+.navbar-brand		{ font-weight: 800 !important; }
+.navbar .container-fluid		{ padding: 8px 40px 8px 20px; }
+.navbar-default		{ border: none; }
+.navbar	a:hover		{ font-weight: 800; }
+
+.icon-bar			{ background-color: #f2f2f2 !important; }
+
+.icon-action		{ text-align: center; }
+.icon-action img	{ padding: 60px; }
+
+.gradient-top		{ height: 10px; width: 100%; background: right top url('/images/gradient-top.gif') repeat-x; }
+.gradient-bottom		{ height: 10px; width: 100%; background: right top url('/images/gradient-bottom.gif') repeat-x; }
+
+.modal-dialog			{ overflow: hidden }
+.modal-header			{ background-color: #f2f2f2; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+.modal-footer			{ background-color: #f2f2f2; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+.modal-header h4		{ font-weight: 700; text-transform: uppercase; color: #1f252a; }
+.modal h3				{ margin: 20px; color: #5c7a99; }
+.modal-footer button	{ margin: 0; font-weight: 700; text-transform: uppercase; }
+
+label				{ font-weight: 300; color: #1f252a; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ background-color: white !important; }
