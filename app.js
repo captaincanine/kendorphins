@@ -23,7 +23,7 @@ if (app.get('env') === 'development') {
 }
 
 if (app.get('env') === 'production') {
-	var RECAPTCHA_PUBLIC_KEY  = '6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS',
+	var RECAPTCHA_PUBLIC_KEY  = '6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS';
 	var RECAPTCHA_PRIVATE_KEY = '6LdLHSUTAAAAAB5XuXwXpfLX_kGSVAMFwsj3cQ0v';
 	var ADMIN_EMAIL = 'kenneth@kendorphins.com';
 }
