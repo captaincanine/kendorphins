@@ -16,6 +16,8 @@ extras.useFilter(swig, 'markdown');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var app = express();
+
 if (app.get('env') === 'development') {
 	var RECAPTCHA_PUBLIC_KEY  = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 	var RECAPTCHA_PRIVATE_KEY = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe';
@@ -27,8 +29,6 @@ if (app.get('env') === 'production') {
 	var RECAPTCHA_PRIVATE_KEY = '6LdLHSUTAAAAAB5XuXwXpfLX_kGSVAMFwsj3cQ0v';
 	var ADMIN_EMAIL = 'kenneth@kendorphins.com';
 }
-
-var app = express();
 
 // view engine setup
 app.engine('html', swig.renderFile);
