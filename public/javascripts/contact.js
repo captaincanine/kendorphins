@@ -10,7 +10,7 @@ angular.module('contact', ['vcRecaptcha'])
 	vm.mode = "contact";
 	
 	// kendorphins key
-	//vm.publicKey = "6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS";
+	vm.publicKey = "6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS";
 	
 	vm.showContact = function() {
 		
