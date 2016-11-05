@@ -1,0 +1,124 @@
+<html ng-app="invite" lang="en">
+    <head>
+	    
+        <meta charset="utf-8">
+
+        <title>Kenneth is turning 27!</title>
+
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,800" rel="stylesheet">
+		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>  
+		<script src="/javascripts/invite.js"></script>
+		
+		<script src="/javascripts/angular-recaptcha.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+		
+		<script>
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+		  ga('create', 'UA-77013063-1', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+
+		<base href="/">
+
+    </head>
+    <body class="invite">
+		
+		<div class="container-fluid">
+			<div class="row" ng-controller="inviteCtrl as ctrl" >
+				<div class="col-xs-8 col-xs-offset-4">
+					<h1>
+						<div class="line-1">Kenneth</div>
+						<div class="line-2">is turning</div>
+						<div class="line-3">27!</div>
+					</h1>
+					<h2>let's celebrate!</h2>
+					<div class="when">
+						<div>Saturday, Dec 3rd</div>
+						<div>7:00pm - 11:00pm</div>
+					</div>
+					<div class="where">
+						<div>218 W 15th St</div>
+						<div><smaller>(between 7th and 8th Ave)</smaller></div>
+						<p><a href="https://goo.gl/maps/qp51nTn3j7T2" target="_blank"><i class="fa fa-map-o" aria-hidden="true"></i></a></p>
+					</div>
+					<p>
+						<button type="button" class="btn btn-default btn-lg" ng-click="ctrl.showRsvp()">R.S.V.P.</button>
+					</p>
+				</div>
+	
+				<div class="modal fade" id="rsvpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">R.S.V.P. to Kenneth's Birthday Celebration</h4>
+				      </div>
+				      <div class="modal-body" ng-show="ctrl.mode != 'thanks'">
+						<form name="rsvpForm">
+						  <div class="form-group">
+						    <label for="contactName">Your Name</label>
+						    <input type="text" class="form-control" id="person" name="name" placeholder="My name is..." ng-model="ctrl.name" required>
+						  </div>
+						  <div class="form-group">
+						    <label for="contactName">Attending</label>
+						    <div class="radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							    See you there!
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    I'll be there with a friend!
+							  </label>
+							</div>
+							<div class="radio disabled">
+							  <label>
+							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+							    I'm sorry, but I'm afraid I'm going to miss it.
+							  </label>
+							</div>						    
+						  </div>
+						  <div class="form-group">
+						    <label for="contactNote">Note (optional)</label>
+						    <textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
+						  </div>
+						  <div vc-recaptcha key="ctrl.publicKey"></div>
+						</form>  
+				      </div>
+				      <div class="modal-body" ng-show="ctrl.mode == 'thanks'">
+					      <h3>Thanks for the R.S.V.P. I hope to see you there.</h3>
+				      </div>
+				      <div class="modal-footer" ng-show="ctrl.mode != 'thanks'">
+				        <button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid">R.S.V.P.</button>
+				      </div>
+				      <div class="modal-footer" ng-show="ctrl.mode == 'thanks'">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+	
+			</div>
+
+		</div><!-- /.container-collapse -->
+
+    </body>
+</html>

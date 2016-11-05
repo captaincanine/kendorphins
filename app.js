@@ -14,6 +14,7 @@ var request = require('request');
 extras.useFilter(swig, 'markdown');
 
 var index = require('./routes/index');
+var invite = require('./routes/invite');
 var users = require('./routes/users');
 
 var app = express();
@@ -46,6 +47,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/invite', function(req, res) {
+	res.render('invite');
+});
 app.use('/admin', function(req, res) {
 	res.render('editor');
 });

@@ -94,3 +94,18 @@ body.admin	{ background: #fff; }
 
 label				{ font-weight: 300; color: #1f252a; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ background-color: white !important; }
+
+
+/* INVITE */
+
+.invite				{ background: #5c7a99 url('/images/invite-background.jpg') repeat-y; background-size: 30%; font-size: 32px; font-weight: 500; text-transform: uppercase; }
+.invite .col-xs-8	{ text-align: center; }
+.invite .when, .invite .where	{ margin: 1em 0; }
+.invite smaller		{ font-size: 18px; text-transform: lowercase; }
+.invite h1			{ font-weight: 800; margin-top: 3em; }
+.invite h2			{ font-weight: 300; text-transform: lowercase; margin: 2em 0; }
+.invite .line-1		{ font-size: 64px; }
+.invite .line-2		{ font-size: 28px; font-weight: 300; }
+.invite .line-3		{ font-size: 120px; }
+.invite .where p	{ margin: 1em 0; }
+.invite button		{ font-size: 18px; font-weight: 800; }
