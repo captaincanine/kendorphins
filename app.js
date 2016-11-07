@@ -50,9 +50,50 @@ app.use('/', index);
 app.use('/invite', function(req, res) {
 	res.render('invite');
 });
-app.use('/admin', function(req, res) {
+app.use('/birthday', function(req, res) {
+	res.render('invite');
+});app.use('/admin', function(req, res) {
 	res.render('editor');
 });
+
+app.post('/rsvp', function(req, res) {
+	
+	try {
+
+		if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+			return res.json({ "responseCode" : 1, "responseDesc" : "Please select captcha"});
+		}
+		
+		// Put your secret key here.
+		var secretKey = RECAPTCHA_PRIVATE_KEY;
+		
+		// req.connection.remoteAddress will provide IP address of connected user.
+		var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+		
+		// Hitting GET request to the URL, Google will respond with success or error scenario.
+		request(verificationUrl, function(error, response,body) {
+	
+			body = JSON.parse(body);
+	
+			// Success will be true or false depending upon captcha validation.
+			if (body.success !== undefined && !body.success) {				
+				return res.json({ "responseCode" : 1, "responseDesc" : "Failed captcha verification"});
+			}
+			
+			var Firebase = require('firebase');
+			var fire = new Firebase('https://kendorphins.firebaseio.com/events/birthday2016');
+			
+			fire.push({ attendee: { name: req.body.name, attending: req.body.attending, note: req.body.note }});
+
+		});
+
+	} catch(e) {
+		
+		console.log(e);
+	}
+
+});
+
 
 app.post('/contact', function(req, res) {
 	

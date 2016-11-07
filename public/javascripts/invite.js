@@ -7,7 +7,7 @@ angular.module('invite', ['vcRecaptcha'])
 	
 	// test key
 	vm.publicKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-	vm.mode = "contact";
+	vm.mode = "rsvp";
 	
 	// kendorphins key
 	vm.publicKey = "6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS";
@@ -15,7 +15,7 @@ angular.module('invite', ['vcRecaptcha'])
 	vm.showRsvp = function() {
 		
 		vm.name = '';
-		vm.email = '';
+		vm.attending = '';
 		vm.note = '';
 		
 		vm.mode = 'rsvp';
@@ -24,7 +24,7 @@ angular.module('invite', ['vcRecaptcha'])
 		
 	}
 	
-  	vm.sendEmail = function() {
+  	vm.sendRsvp = function() {
 
 		if (vcRecaptchaService.getResponse() === ""){ //if string is empty
 			
@@ -32,17 +32,17 @@ angular.module('invite', ['vcRecaptcha'])
 
 			var post_data = {  //prepare payload for request
 				'name':vm.name,
-				'email':vm.email,
+				'attending':vm.attending,
 				'note':vm.note,
 				'g-recaptcha-response':vcRecaptchaService.getResponse()  //send g-captcah-response to our server
 			}
 		
-			$http.post('/contact', post_data).success(function(response){
+			$http.post('/rsvp', post_data).success(function(response){
 				
 				if (response.responseCode === 0){
 					vm.mode = 'thanks';
 				} else {
-					alert("Contact form submission failed.");
+					alert("Could not R.S.V.P. Please send email to kenneth@kendorphins.com.");
 				}
 			})
 			.error(function(error){

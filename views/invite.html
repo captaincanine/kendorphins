@@ -47,14 +47,15 @@
 						<div class="line-2">is turning</div>
 						<div class="line-3">27!</div>
 					</h1>
-					<h2>let's celebrate!</h2>
+					<h2>let's celebrate with food, drink, and cake!</h2>
 					<div class="when">
 						<div>Saturday, Dec 3rd</div>
 						<div>7:00pm - 11:00pm</div>
 					</div>
 					<div class="where">
 						<div>218 W 15th St</div>
-						<div><smaller>(between 7th and 8th Ave)</smaller></div>
+						<div><smaller>between 7th and 8th Ave</smaller></div>
+						<div><smaller>at the home of Keith Marran</smaller></div>
 						<p><a href="https://goo.gl/maps/qp51nTn3j7T2" target="_blank"><i class="fa fa-map-o" aria-hidden="true"></i></a></p>
 					</div>
 					<p>
@@ -79,19 +80,19 @@
 						    <label for="contactName">Attending</label>
 						    <div class="radio">
 							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+							    <input type="radio" name="attending" id="optionsRadios1" value="1" ng-model="ctrl.attending" checked>
 							    See you there!
 							  </label>
 							</div>
 							<div class="radio">
 							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+							    <input type="radio" name="attending" id="optionsRadios2" value="2" ng-model="ctrl.attending">
 							    I'll be there with a friend!
 							  </label>
 							</div>
 							<div class="radio disabled">
 							  <label>
-							    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+							    <input type="radio" name="attending" id="optionsRadios3" value="0" ng-model="ctrl.attending">
 							    I'm sorry, but I'm afraid I'm going to miss it.
 							  </label>
 							</div>						    
@@ -104,10 +105,10 @@
 						</form>  
 				      </div>
 				      <div class="modal-body" ng-show="ctrl.mode == 'thanks'">
-					      <h3>Thanks for the R.S.V.P. I hope to see you there.</h3>
+					      <h3>Thanks for the R.S.V.P.</h3>
 				      </div>
 				      <div class="modal-footer" ng-show="ctrl.mode != 'thanks'">
-				        <button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid">R.S.V.P.</button>
+				        <button type="button" class="btn btn-default" ng-click="ctrl.sendRsvp()" ng-disabled="contactForm.$invalid">R.S.V.P.</button>
 				      </div>
 				      <div class="modal-footer" ng-show="ctrl.mode == 'thanks'">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>

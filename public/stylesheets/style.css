@@ -102,7 +102,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .invite .col-xs-8	{ text-align: center; }
 .invite .when, .invite .where	{ margin: 1em 0; }
 .invite smaller		{ font-size: 18px; text-transform: lowercase; }
-.invite h1			{ font-weight: 800; margin-top: 3em; }
+.invite h1			{ font-weight: 800; margin-top: 1em; }
 .invite h2			{ font-weight: 300; text-transform: lowercase; margin: 2em 0; }
 .invite .line-1		{ font-size: 64px; }
 .invite .line-2		{ font-size: 28px; font-weight: 300; }
