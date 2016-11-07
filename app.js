@@ -47,12 +47,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/invite', function(req, res) {
 	res.render('invite');
 });
+
 app.use('/birthday', function(req, res) {
 	res.render('invite');
-});app.use('/admin', function(req, res) {
+});
+
+app.use('/admin', function(req, res) {
 	res.render('editor');
 });
 
@@ -79,11 +83,14 @@ app.post('/rsvp', function(req, res) {
 			if (body.success !== undefined && !body.success) {				
 				return res.json({ "responseCode" : 1, "responseDesc" : "Failed captcha verification"});
 			}
-			
+
 			var Firebase = require('firebase');
 			var fire = new Firebase('https://kendorphins.firebaseio.com/events/birthday2016');
 			
-			fire.push({ attendee: { name: req.body.name, attending: req.body.attending, note: req.body.note }});
+			fire.push({ name: req.body.name, attending: req.body.attending, note: req.body.note });
+			
+			res.statusCode = 200;
+			res.send('thanks');
 
 		});
 
@@ -91,7 +98,7 @@ app.post('/rsvp', function(req, res) {
 		
 		console.log(e);
 	}
-
+	
 });
 
 

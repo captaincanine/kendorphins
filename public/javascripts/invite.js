@@ -38,8 +38,8 @@ angular.module('invite', ['vcRecaptcha'])
 			}
 		
 			$http.post('/rsvp', post_data).success(function(response){
-				
-				if (response.responseCode === 0){
+								
+				if (response == 'thanks'){
 					vm.mode = 'thanks';
 				} else {
 					alert("Could not R.S.V.P. Please send email to kenneth@kendorphins.com.");
