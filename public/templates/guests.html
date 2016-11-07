@@ -1,0 +1,16 @@
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>#</th> 
+			<th>Note</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="att in guests">
+			<td>{{ att.name }}</td>
+			<td>{{ att.attending }}</td>
+			<td>{{ att.note }}</td>
+		</tr>
+	</tbody>
+</table>
