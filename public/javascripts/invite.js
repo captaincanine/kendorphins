@@ -1,4 +1,18 @@
-angular.module('invite', ['vcRecaptcha'])
+angular.module('invite', ['vcRecaptcha', 'ngRoute', 'ngAnimate', 'firebase'])
+ 
+.constant('fbUrl', 'https://kendorphins.firebaseio.com/')
+
+.config(function($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/birthday/guests', {
+      controller:'guestsCtrl',
+      templateUrl:'/templates/guests.html'
+    })
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: true
+	});
+})
 
 .controller('inviteCtrl', ['vcRecaptchaService', '$http', 
   function(vcRecaptchaService, $http) {
@@ -11,7 +25,7 @@ angular.module('invite', ['vcRecaptcha'])
 	
 	// kendorphins key
 	vm.publicKey = "6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS";
-	
+		
 	vm.showRsvp = function() {
 		
 		vm.name = '';

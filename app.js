@@ -52,6 +52,10 @@ app.use('/invite', function(req, res) {
 	res.render('invite');
 });
 
+app.use('/guests', function(req, res) {
+	res.render('editor');
+});
+
 app.use('/birthday', function(req, res) {
 	res.render('invite');
 });

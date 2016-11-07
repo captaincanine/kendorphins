@@ -14,6 +14,10 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
+    .when('/guests', {
+      controller:'guestsCtrl',
+      templateUrl:'/templates/guests.html'
+    })
     .when('/editor', {
       controller:'EditCtrl',
       templateUrl:'/templates/editor.html'
@@ -22,6 +26,7 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
       controller:'LoginCtrl',
       templateUrl:'/templates/login.html'
     });
+
 	$locationProvider.html5Mode({
 	  enabled: true,
 	  requireBase: true
@@ -91,6 +96,14 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 
 })
 
+.controller('guestsCtrl',
+  function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
+	  var ref = new Firebase(fbUrl + 'events/birthday2016');
+	  $scope.guests = $firebase(ref).$asArray();
+	  console.log($scope.guests);
+  }
+)
+
 .controller('EditCtrl', 
   function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
 
@@ -98,7 +111,7 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 
     var contentUrl = fbUrl;
     var fb = $firebase(new Firebase(contentUrl));
-    $scope.content = fb.$asObject();
+    $scope.content = ref;
 
     $scope.editPress = function(key) {
 	    var l = $scope.content.press[key];
