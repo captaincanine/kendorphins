@@ -99,8 +99,21 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 .controller('guestsCtrl',
   function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
 	  var ref = new Firebase(fbUrl + 'events/birthday2016');
-	  $scope.guests = $firebase(ref).$asArray();
-	  console.log($scope.guests);
+	  $scope.guests = $firebase(ref).$asArray();	  
+	  $scope.totalAttending = function(items) {
+		  
+		  var total = 0;
+		  
+		  for (item in items) {
+			  if (!isNaN(items[item].attending)) {
+				  total += parseInt(items[item].attending);
+			  }
+		  }
+		  
+		  return total;
+		  
+	  }
+	  
   }
 )
 
