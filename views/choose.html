@@ -1,0 +1,113 @@
+<html ng-app="contact" lang="en">
+    <head>
+	    
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    
+		<meta property="og:url"                content="http://kendorphins.com" />
+		<meta property="og:type"               content="website" />
+		<meta property="og:title"              content="Choose Your Best Self" />
+		<meta property="og:description"        content="Hitting the gym is only part of the equation. Working your heart and spirit in conjunction with your body has powerful and lasting effects. It reaches beyond simply getting into shape. I’d like to show you the power you have inside yourself - the power to create real and lasting change from within." />
+		<meta property="og:image"              content="http://kendorphins.com/images/kendorphins-promo.jpg" />
+
+        <title>Choose Your Best Self | kendorphins</title>
+
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
+		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>  
+		<script src="/javascripts/contact.js"></script>
+		
+		<script src="/javascripts/angular-recaptcha.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+		
+		<script>
+
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	
+		  ga('create', 'UA-77013063-1', 'auto');
+		  ga('send', 'pageview');
+		
+		</script>
+
+		<base href="/">
+
+    </head>
+    <body id="choose">
+		
+		<header>
+			<div class="container" align="center">
+				<h1 align="center"><a href="/">Kenneth Ferrer</a></h1>
+			</div>
+		</header>
+		
+		<div class="main">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<img src="/images/grey-sweatshirt.jpg" class="img-responsive" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<h2>Choose Your Best Self</h2>
+						<p>A lot of people make resolutions this time of year and subsequently lose sight of them in March. When you’re excited about new changes, how do you stop yourself from falling back into old patterns in a couple of months?</p>
+						<p>Hitting the gym is only part of the equation. Working your heart and spirit in conjunction with your body has powerful and lasting effects. It reaches beyond simply getting into shape. I’d like to show you the power you have inside yourself - the power to create real and lasting change from within.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="form-body" ng-show="ctrl.mode != 'thanks'">
+							<form name="contactForm">
+							  <div class="form-group">
+							    <label for="contactName">Your Name</label>
+							    <input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
+							  </div>
+							  <div class="form-group">
+							    <label for="contactEmail">Email address</label>
+							    <input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
+							  </div>
+							  <div class="form-group">
+							    <label for="contactNote">Note (optional)</label>
+							    <textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
+							  </div>
+							  <div vc-recaptcha key="ctrl.publicKey"></div>
+		  				      <div ng-show="ctrl.mode != 'thanks'">
+		  					  	<button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid">Contact Me</button>
+							  </div>
+							</form>
+						</div>
+						<div class="form-body" ng-show="ctrl.mode == 'thanks'">
+							<h3>Thanks for reaching out. I'll get back to you shortly.</h3>
+						</div>
+
+					</div>
+				</div>
+			</div>		
+		</div>
+		
+		<footer>
+			<div class="container">
+				<h2>Follow Kenneth</h2>
+			    {% for link in firebase.follow %}
+					<span class="social">
+						<a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.icon }} fa-3x" aria-hidden="true"></i></a>
+					</span>
+				{% endfor %}
+		    </div>
+		</footer>
+
+    </body>
+</html>

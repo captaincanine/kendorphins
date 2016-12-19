@@ -60,6 +60,17 @@ app.use('/birthday', function(req, res) {
 	res.render('invite');
 });
 
+
+app.use('/choose', function(req, res) {
+	
+	var myFirebaseRef = new Firebase("https://kendorphins.firebaseio.com/");
+	myFirebaseRef.once("value", function(snapshot) {
+		var data = snapshot.val();
+		res.render('choose', { firebase: data });
+	});
+
+});
+
 app.use('/admin', function(req, res) {
 	res.render('editor');
 });
