@@ -25,8 +25,10 @@ angular.module('contact', ['vcRecaptcha'])
 	}
 	
   	vm.sendEmail = function() {
-
+	  	
 		if (vcRecaptchaService.getResponse() === ""){ //if string is empty
+			
+			console.log('No recaptcha');
 			
 		} else {
 

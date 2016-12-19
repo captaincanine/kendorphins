@@ -53,7 +53,7 @@
 			</div>
 		</header>
 		
-		<div class="main">
+		<div class="main" ng-controller="contactCtrl as ctrl" recaptcha-key="{{ recaptcha_key }}">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
@@ -89,7 +89,7 @@
 							  </div>
 							</form>
 						</div>
-						<div class="form-body" ng-show="ctrl.mode == 'thanks'">
+						<div class="form-body form-message" ng-show="ctrl.mode == 'thanks'">
 							<h3>Thanks for reaching out. I'll get back to you shortly.</h3>
 						</div>
 
