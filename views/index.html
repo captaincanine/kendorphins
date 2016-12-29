@@ -63,7 +63,6 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#training">Training</a></li>
 					<li><a href="#flywheel">FlyWheel</a></li>
-					<li><a href="#cpx">CPX</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
@@ -91,7 +90,7 @@
 			<div class="row blueback training" id="training" ng-controller="contactCtrl as ctrl" recaptcha-key="{{ recaptcha_key }}">
 				<div class="col-xs-12 gradient-top"></div>
 				
-			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/bicep-curl.png" class="img-responsive" /></div>
+			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/kettle-bells.png" class="img-responsive" /></div>
 			    <div class="col-sm-9">
 				    <div class="info">
 					    <h2>{{ firebase.locations.training.name }}</h2>
@@ -137,7 +136,6 @@
 				  </div>
 				</div>
 
-	
 				<div class="col-xs-12 gradient-bottom"></div>
 			</div>
 			
@@ -152,22 +150,8 @@
 			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/cycle.png" class="img-responsive" /></div>
 			</div>
 			
-			<div class="row blueback training" id="cpx">
+			<div class="row blueback">
 				<div class="col-xs-12 gradient-top"></div>
-				
-			    <div class="col-sm-3 hidden-xs icon-action"><img src="/images/kettle-bells.png" class="img-responsive" /></div>
-			    <div class="col-sm-9">
-				    <div class="info">
-					    <h2>{{ firebase.locations.cpx.name }}</h2>
-						<p class="description">{{ firebase.locations.cpx.description }}</p>
-						<p><a class="btn btn-default" href="{{ firebase.locations.cpx.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.cpx.name }}</b> Schedule</a></p>
-				    </div>
-			    </div>
-	
-				<div class="col-xs-12 gradient-bottom"></div>
-			</div>
-			
-			<div class="row greyback">
 				<div class="col-md-8">
 					<div class="info">
 						<h2>From <i>Rate Your Burn</i>...</h2>
@@ -189,10 +173,10 @@
 						{% endfor %}
 					</div>
 				</div>
+				<div class="col-xs-12 gradient-bottom"></div>
 			</div>
 			
-			<div class="row blueback">
-				<div class="col-xs-12 gradient-top"></div>
+			<div class="row greyback">
 				<div class="col-xs-12">
 				    <div class="links">
 						<h2>Follow Kenneth</h2>
