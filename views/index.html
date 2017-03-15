@@ -96,7 +96,7 @@
 					    <h2>{{ firebase.locations.training.name }}</h2>
 						<p class="description">{{ firebase.locations.training.description }}</p>
 						<p><button type="button" class="btn btn-default btn-lg" ng-click="ctrl.showContact()">Contact Kenneth About <b>Personal Training</b></button></p>
-					    <div class="comments">
+					    <div class="comments" ng-show="false">
 						    <div class="row">
 							    <div class="col-xs-1" ng-show="comments.training">
 								    <i class="fa fa-3x fa-comments-o"></i>
@@ -159,7 +159,7 @@
 					    <h2>{{ firebase.locations.flywheel.name }}</h2>
 						<p class="description">{{ firebase.locations.flywheel.description }}</p>
 						<p><a class="btn btn-default" href="{{ firebase.locations.flywheel.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.flywheel.name }}</b> Schedule</a></p>
-						<div class="comments">
+						<div class="comments" ng-show="false">
 						    <div class="row">
 							    <div class="col-xs-1" ng-show="comments.flywheel">
 								    <i class="fa fa-3x fa-comments-o"></i>
