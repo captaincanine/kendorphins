@@ -28,7 +28,7 @@ if (app.get('env') === 'development') {
 if (app.get('env') === 'production') {
 	var RECAPTCHA_PUBLIC_KEY  = '6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS';
 	var RECAPTCHA_PRIVATE_KEY = '6LdLHSUTAAAAAB5XuXwXpfLX_kGSVAMFwsj3cQ0v';
-	var ADMIN_EMAIL = 'kenneth@kendorphins.com';
+	var ADMIN_EMAIL = 'keith@marran.com';
 }
 
 // view engine setup
@@ -59,7 +59,6 @@ app.use('/guests', function(req, res) {
 app.use('/birthday', function(req, res) {
 	res.render('invite');
 });
-
 
 app.use('/choose', function(req, res) {
 	
@@ -116,6 +115,76 @@ app.post('/rsvp', function(req, res) {
 	
 });
 
+
+app.post('/comment', function(req, res) {
+
+	try {
+
+		if (req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+			return res.json({ "responseCode" : 1, "responseDesc" : "Please select captcha"});
+		}
+		
+		// Put your secret key here.
+		var secretKey = RECAPTCHA_PRIVATE_KEY;
+		
+		// req.connection.remoteAddress will provide IP address of connected user.
+		var verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + req.body['g-recaptcha-response'] + "&remoteip=" + req.connection.remoteAddress;
+		
+		// Hitting GET request to the URL, Google will respond with success or error scenario.
+		request(verificationUrl, function(error, response, body) {
+	
+			body = JSON.parse(body);
+	
+			// Success will be true or false depending upon captcha validation.
+			if (body.success !== undefined && !body.success) {				
+				return res.json({ "responseCode" : 1, "responseDesc" : "Failed captcha verification"});
+			}
+			
+			// RECORD THE ENTRY						
+			var d = new Date();
+		
+			var Firebase = require('firebase');
+			var fire = new Firebase('https://kendorphins.firebaseio.com/comments/queue');
+			
+			try {
+				fire.push({ name: req.body.name, email: req.body.email, note: req.body.note, type: req.body.type, created:  d.toISOString() });
+			} catch(e) {
+				console.log(e);
+			}
+			
+			// SEND EMAIL
+		    var transporter = nodemailer.createTransport("smtps://admin%40kendorphins.com:PlHeLeHe@smtp.gmail.com");
+		    
+		    // setup e-mail data with unicode symbols
+			var mailOptions = {
+			    from: 		'admin@kendorphins.com', // sender address
+			    to: 		ADMIN_EMAIL, // list of receivers
+			    subject: 	'You have a message from kendorphins.com', // Subject line
+			    html: 		'<p>You have a message from kendorphins.com. The following person left a comment:</p><blockquote><p>name: <b>' + req.body.name + '</b></p><p>email: <b><a href="mailto:' + req.body.email + '">' + req.body.email + '</a></b></p><p>note: <b>' + req.body.note + '</b></p></blockquote><p>Go <a href="http://kendorphins.com/admin">here</a> to approve it.</p>' // html body
+			};
+			
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, function(error, info){
+
+			    if (error) {
+			        console.log(error);
+			    } else {
+					res.json({"responseCode" : 0, "responseDesc" : "Sucess"});
+			    }
+			    
+			});
+			
+			// SEND A RESPONSE
+			res.statusCode = 200;
+			res.send('thanks');
+	
+		});
+
+	} catch(e) {
+		console.log(e);
+	}
+
+});
 
 app.post('/contact', function(req, res) {
 	

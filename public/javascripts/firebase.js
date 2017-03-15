@@ -56,8 +56,7 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 		  if (error) {
 		    console.log("Login Failed!", error);
 		  } else {
-			console.log(authData);
-			ref.child('users/requests').push(authData);
+			ref.child('users/requests/' + authData.uid).set({ displayName: authData.google.displayName, email: authData.google.email });
 			$('.info').append('<div class="alert alert-success" role="alert">Thank you. An administrator will contact you when you have been approved for access.</div>');
 		  }
 		}, {
@@ -124,7 +123,44 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 
     var contentUrl = fbUrl;
     var fb = $firebase(new Firebase(contentUrl));
-    $scope.content = ref;
+        
+	ref.once('value', function(dataSnapshot) {
+		$scope.$apply(function() {
+			$scope.content = dataSnapshot.val();
+		});
+	});
+	
+	$scope.approveComment = function(key) {
+
+		var comment = $scope.content.comments.queue[key];
+		
+		var ref = new Firebase(fbUrl);
+		ref.child('comments/' + comment.type + '/' + key).set(comment);
+		ref.child('comments/queue' + '/' + key).remove();
+		
+		delete $scope.content.comments.queue[key];
+		
+		if (angular.equals($scope.content.comments.queue, {})) {
+			delete $scope.content.comments.queue;
+		}
+
+	}
+
+	$scope.deleteComment = function(key) {
+
+		var comment = $scope.content.comments.queue[key];
+		
+		var ref = new Firebase(fbUrl);
+		ref.child('deleted/comments/queue/' + key).set(comment);
+		ref.child('comments/queue' + '/' + key).remove();
+		
+		delete $scope.content.comments.queue[key];
+		
+		if (angular.equals($scope.content.comments.queue, {})) {
+			delete $scope.content.comments.queue;
+		}
+
+	}
 
     $scope.editPress = function(key) {
 	    var l = $scope.content.press[key];
