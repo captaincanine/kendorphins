@@ -36,9 +36,11 @@ body {
   background: transparent;
 }
 
-a {
-  color: #eee;
-}
+a 		{ color: #f2f2f2; }
+.greyback a	{ color: #8ca4bb; }
+.blueback a	{ color: #f2f2f2; }
+a.btn		{ color: #1f252a !important; }
+.action a:hover	{ text-decoration: none; cursor: pointer; }
 
 a b	{ white-space: nowrap; }
 
@@ -88,6 +90,7 @@ body.admin	{ background: #fff; }
 .modal-dialog			{ overflow: hidden }
 .modal-header			{ background-color: #f2f2f2; border-top-left-radius: 6px; border-top-right-radius: 6px; }
 .modal-footer			{ background-color: #f2f2f2; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+.modal-header			{ color: #1f252a; }
 .modal-header h4		{ font-weight: 700; text-transform: uppercase; color: #1f252a; }
 .modal h3				{ margin: 20px; color: #5c7a99; }
 .modal-footer button	{ margin: 0; font-weight: 700; text-transform: uppercase; }
@@ -98,8 +101,9 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .comments			{  }
 .comments .comment 	{ margin: 6px 0; }
 .comments .name		{ font-size: 12px; margin-top: 4px; }
-.comments button		{ padding-left: 40px; position: relative; font-size: 12px; }
-.comments button .fa	{ position: absolute; left: 12px; }
+.comments a		{ padding-left: 40px; position: relative; font-size: 12px; }
+.comments a .fa	{ position: absolute; left: 12px; }
+.comments .action		{ font-size: 14px; text-transform: uppercase; }
 
 
 /* CHOOSE */

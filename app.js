@@ -28,7 +28,7 @@ if (app.get('env') === 'development') {
 if (app.get('env') === 'production') {
 	var RECAPTCHA_PUBLIC_KEY  = '6LdLHSUTAAAAAAivtlfkbffOQKMz3jgPJe2DZukS';
 	var RECAPTCHA_PRIVATE_KEY = '6LdLHSUTAAAAAB5XuXwXpfLX_kGSVAMFwsj3cQ0v';
-	var ADMIN_EMAIL = 'keith@marran.com';
+	var ADMIN_EMAIL = 'kenneth@kendorphins.com';
 }
 
 // view engine setup
@@ -104,7 +104,7 @@ app.post('/rsvp', function(req, res) {
 			fire.push({ name: req.body.name, attending: req.body.attending, note: req.body.note });
 			
 			res.statusCode = 200;
-			res.send('thanks');
+			res.json({"responseCode" : 0, "responseDesc" : "Success"});
 
 		});
 
@@ -169,14 +169,10 @@ app.post('/comment', function(req, res) {
 			    if (error) {
 			        console.log(error);
 			    } else {
-					res.json({"responseCode" : 0, "responseDesc" : "Sucess"});
+					res.json({"responseCode" : 0, "responseDesc" : "Success"});
 			    }
 			    
 			});
-			
-			// SEND A RESPONSE
-			res.statusCode = 200;
-			res.send('thanks');
 	
 		});
 

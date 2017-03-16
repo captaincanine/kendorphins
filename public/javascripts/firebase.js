@@ -119,16 +119,8 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 .controller('EditCtrl', 
   function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
 
-    var ref = new Firebase(fbUrl);
-
-    var contentUrl = fbUrl;
-    var fb = $firebase(new Firebase(contentUrl));
-        
-	ref.once('value', function(dataSnapshot) {
-		$scope.$apply(function() {
-			$scope.content = dataSnapshot.val();
-		});
-	});
+    var fb = $firebase(new Firebase(fbUrl));
+	$scope.content = fb.$asObject();
 	
 	$scope.approveComment = function(key) {
 

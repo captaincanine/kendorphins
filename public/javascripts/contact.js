@@ -19,6 +19,10 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 		});
 	});
 	
+	vm.setResponse = function(response) {
+		vm.myRecaptchaResponse = response;
+	}
+	
 	vm.showContact = function() {
 		
 		vm.name = '';
@@ -46,63 +50,49 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 	
 	vm.leaveComment = function() {
 
-/*
-		if (vcRecaptchaService.getResponse() === ""){ //if string is empty
+		var post_data = {  //prepare payload for request
+			'name':vm.name,
+			'email':vm.email,
+			'note':vm.note,
+			'type':vm.type,
+			'g-recaptcha-response': vm.myRecaptchaResponse  //send g-captcha-response to our server
+		}
+		
+		$http.post('/comment', post_data).success(function(response){
 			
-			console.log('No recaptcha');
-			
-		} else {
-*/
-			var post_data = {  //prepare payload for request
-				'name':vm.name,
-				'email':vm.email,
-				'note':vm.note,
-				'type':vm.type,
-				'g-recaptcha-response':vcRecaptchaService.getResponse()  //send g-captcha-response to our server
+			if (response.responseCode === 0){
+				vm.mode = 'thanks';
+			} else {
+				console.log(response);
+				alert("I was unable to leave a comment.");
 			}
+		})
+		.error(function(error){
+			console.log(response);
+		})
 		
-			$http.post('/comment', post_data).success(function(response){
-				
-				if (response === 'thanks'){
-					vm.mode = 'thanks';
-				} else {
-					alert("I was unable to leave a comment.");
-				}
-			})
-			.error(function(error){
-			
-			})
-		}		
-		
-//	}
+	}
 
   	vm.sendEmail = function() {
 	  	
-		if (vcRecaptchaService.getResponse() === ""){ //if string is empty
-			
-			console.log('No recaptcha');
-			
-		} else {
-
-			var post_data = {  //prepare payload for request
-				'name':vm.name,
-				'email':vm.email,
-				'note':vm.note,
-				'g-recaptcha-response':vcRecaptchaService.getResponse()  //send g-captcah-response to our server
-			}
-		
-			$http.post('/contact', post_data).success(function(response){
-				
-				if (response.responseCode === 0){
-					vm.mode = 'thanks';
-				} else {
-					alert("Contact form submission failed.");
-				}
-			})
-			.error(function(error){
-			
-			})
+		var post_data = {  //prepare payload for request
+			'name': vm.name,
+			'email': vm.email,
+			'note': vm.note,
+			'g-recaptcha-response': vm.myRecaptchaResponse  //send g-captcah-response to our server
 		}
+		
+		$http.post('/contact', post_data).success(function(response){
+			
+			if (response.responseCode === 0){
+				vm.mode = 'thanks';
+			} else {
+				alert("Contact form submission failed.");
+			}
+		})
+		.error(function(error){
+		
+		})
 		
   	}
 
