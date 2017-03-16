@@ -119,9 +119,16 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
 .controller('EditCtrl', 
   function($scope, $location, $firebase, $firebaseAuth, $routeParams, fbUrl) {
 
-    var fb = $firebase(new Firebase(fbUrl));
+	var ref = new Firebase(fbUrl);
+    var fb = $firebase(ref);
 	$scope.content = fb.$asObject();
+
+	var auth = ref.getAuth();
 	
+	if (auth == null) {
+		$location.path("/");
+	}
+		
 	$scope.approveComment = function(key) {
 
 		var comment = $scope.content.comments.queue[key];

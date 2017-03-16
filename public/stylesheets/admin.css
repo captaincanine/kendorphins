@@ -7,10 +7,19 @@ h1				{ font-weight: 100; letter-spacing: 1px; border-bottom: 1px solid #ccc; ma
 label			{ font-weight: 100; letter-spacing: 1px; }
 body			{ background: rgba(245, 250, 255, 0.2); }
 
-.table>tbody>tr>td	{ border: none; }
+.table>tbody>tr>td	{ border: none; line-height: 150% !important; }
 .table tr + tr 		{ border-top: 1px dotted #ccc; }
 .table tfoot		{ font-weight: bold; }
 
-#login button		{ width: 200px; height: 60px; }
+#login button		{ width: 200px; height: 60px; margin-bottom: 20px; }
 
 .note			{ padding-top: 8px; }
+
+@media (max-width: 768px) {
+	h1			{ font-size: 24px; }
+    .container	{ padding: 20px; }
+}
+
+@media (max-width: 444px) {
+	#login 		{ text-align: center; }
+}
