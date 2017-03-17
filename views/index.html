@@ -101,10 +101,10 @@
 						<p><button type="button" class="btn btn-default btn-lg" ng-click="ctrl.showContact()">Contact Kenneth About <b>Personal Training</b></button></p>
 					    <div class="comments">
 						    <div class="row">
-							    <div class="col-xs-1">
+							    <div class="col-xs-2 col-md-1">
 								    <i class="fa fa-3x fa-comments-o"></i>
 							    </div>
-							    <div class="col-xs-11">
+							    <div class="col-xs-10 col-md-11">
 								    <div class="col-xs-12 comment" ng-repeat="c in comments.training">
 									    <div class="note"><i class="fa fa-quote-left fa-lg fa-pull-left"></i> {% raw %}{{ c.note }}{% endraw %} </div>
 									    <div class="name">&mdash; {% raw %}{{ c.name }}{% endraw %}</div>
@@ -164,10 +164,10 @@
 						<p><a class="btn btn-default" href="{{ firebase.locations.project.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.project.name }}</b> Schedule</a></p>
 						<div class="comments">
 						    <div class="row">
-							    <div class="col-xs-1">
+							    <div class="col-xs-2 col-md-1">
 								    <i class="fa fa-3x fa-comments-o"></i>
 							    </div>
-							    <div class="col-xs-11">
+							    <div class="col-xs-10 col-md-11">
 								    <div class="col-xs-12 comment" ng-repeat="c in comments.project">
 									    <div class="note"><i class="fa fa-quote-left fa-lg fa-pull-left"></i> {% raw %}{{ c.note }}{% endraw %} </div>
 									    <div class="name">&mdash; {% raw %}{{ c.name }}{% endraw %}</div>
@@ -191,10 +191,10 @@
 						<p><a class="btn btn-default" href="{{ firebase.locations.flywheel.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.flywheel.name }}</b> Schedule</a></p>
 						<div class="comments">
 						    <div class="row">
-							    <div class="col-xs-1">
+							    <div class="col-xs-2 col-md-1">
 								    <i class="fa fa-3x fa-comments-o"></i>
 							    </div>
-							    <div class="col-xs-11">
+							    <div class="col-xs-10 col-md-11">
 								    <div class="col-xs-12 comment" ng-repeat="c in comments.flywheel">
 									    <div class="note"><i class="fa fa-quote-left fa-lg fa-pull-left"></i> {% raw %}{{ c.note }}{% endraw %} </div>
 									    <div class="name">&mdash; {% raw %}{{ c.name }}{% endraw %}</div>
