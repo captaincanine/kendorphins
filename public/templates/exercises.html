@@ -1,0 +1,106 @@
+<form name="myEditor" class="cms form-horizontal" novalidate>
+	
+	<div class="viewList" ng-show="mode == 'list'">
+
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th class="text-center">Intensity</th>
+						<th class="text-center">Tabata</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tr ng-repeat="e in exercises">
+					<td>{{ e.title }}</td>
+					<td align="center">{{ e.intensity }}</td>
+					<td align="center"><i class="fa fa-check" ng-show="e.usedInTabata"></i></td>
+					<td class="pull-right">			
+						<button ng-click="editExercise(e)" class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+					</td>
+				</tr>			
+			</table>
+		</div>
+
+		<button class="btn btn-primary" ng-click="createExercise()"><i class="fa fa-thumbs-up">&nbsp;&nbsp;</i>Create a new exercise</button>
+
+	</div>
+	
+	<div class="detailEditor" ng-show="(mode == 'create') || (mode == 'edit')">
+	
+	<div class="form-group" ng-class="{ 'has-error': myEditor.title.$invalid && !myEditor.title.$pristine }">
+		<label class="col-sm-2 control-label">Exercise Title</label>
+		<div class="col-sm-10">
+			<input type="text" name="title" ng-model="exercise.title" class="form-control" required>
+			<span ng-show="myEditor.title.$error.required && !myEditor.title.$pristine" class="help-block">This field is required</span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Intensity</label>
+		<div class="col-sm-10 radio">
+			<label class="radio" ng-repeat="e in intensity">
+			  <input type="radio" ng-model="exercise.intensity" name="intensity" id="inlineRadio1" value="{{ e.id }}"> {{ e.label }}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Muscle Group</label>
+		<div class="col-sm-3 radio" ng-repeat="col in muscleGroups.columns">
+			<label class="checkbox" ng-repeat="muscle in col">
+			  <input type="checkbox" ng-model="exercise.muscleGroups[muscle.id]" name="muscleGroup" value="{{ muscle.id }}"> {{ muscle.label }}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Requirements</label>
+		<div class="col-sm-10 radio">
+			<label class="radio" ng-repeat="e in usesWeights">
+			  <input type="radio" ng-model="exercise.usesWeights" name="usesWeights" id="inlineRadio1" value="{{ e.id }}"> {{ e.label }}
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2 control-label"></label>
+		<div class="col-sm-10 radio">
+			<label class="radio" ng-repeat="e in weightTypes">
+			  <input type="radio" ng-model="exercise.weightType" name="weightType" id="inlineRadio1" value="{{ e.id }}"> {{ e.label }}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label"></label>
+		<div class="col-sm-10 radio">
+			<label class="checkbox">
+			  <input type="checkbox" ng-model="exercise.usesBench" name="usesBench" id="inlineRadio1" value="yes"> Requires a bench?
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-sm-2 control-label"></label>
+		<div class="col-sm-10 radio">
+			<label class="checkbox">
+			  <input type="checkbox" ng-model="exercise.usedInTabata" name="usedInTabata" id="inlineRadio1" value="yes"> Include in tabata?
+			</label>
+		</div>
+	</div>
+	
+	<br>
+	
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2">
+			<button ng-click="saveExercise()" ng-disabled="myEditor.$invalid" class="btn btn-primary">Save</button>
+			<a  ng-click="cancelEdit()" class="btn">Cancel</a>
+		</div>
+	</div>
+	
+	</div>
+
+	
+</form>

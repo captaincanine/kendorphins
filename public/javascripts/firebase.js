@@ -22,6 +22,10 @@ angular.module('content', ['ngRoute', 'ngAnimate', 'firebase'])
       controller:'EditCtrl',
       templateUrl:'/templates/editor.html'
     })
+    .when('/exercises', {
+      controller:'ExercisesCtrl',
+      templateUrl:'/templates/exercises.html'
+    })
     .when('/', {
       controller:'LoginCtrl',
       templateUrl:'/templates/login.html'

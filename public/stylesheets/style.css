@@ -10,6 +10,7 @@ html {
 	.btn	{ font-size: 12px !important; }
 	.info	{ margin: 1em 0 !important; }
 	h2		{ margin-top: 0 !important; font-size: 18px; }
+	#about-video					{ height: 140px; }
 }
 
 @media (max-width: 480px) {
@@ -21,6 +22,11 @@ html {
 	.navbar .container-fluid		{ padding: 8px 20px !important; }
 	.icon-action img	{ padding: 20px !important; }
 	.about				{ font-size: 16px !important; }
+	#about-video					{ height: 230px; }
+}
+
+@media (max-width: 1000px) {
+	#about-video		{ height: 270px; }
 }
 
 @media (max-width: 1100px) {
