@@ -60,6 +60,10 @@ app.use('/birthday', function(req, res) {
 	res.render('invite');
 });
 
+app.use('/prototype', function(req, res) {
+	res.render('prototype');
+});
+
 app.use('/choose', function(req, res) {
 	
 	var myFirebaseRef = new Firebase("https://kendorphins.firebaseio.com/");

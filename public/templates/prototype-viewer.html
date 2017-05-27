@@ -1,0 +1,54 @@
+<div id="main">
+	
+	<timer interval="1000" countdown="100">{{countdown}}</timer>
+	<button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+	<button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+
+	<div id="video" ng-hide="$ctrl.video.message == null">
+		<div class="viewer"><img class="img-responsive" src="https://i.ytimg.com/vi/NpEaa2P7qZI/maxresdefault.jpg" /></div>
+		<div class="helper">{{ $ctrl.video.message }}</div>
+	</div>
+	
+	<div id="timer" ng-show="$ctrl.timer.timeLeft > 0">{{ $ctrl.toTimeString($ctrl.timer.timeLeft) }}</div>
+		
+	<div id="status">
+		<div id="happening-now">Kendorphins Prototype</div>			
+		<div id="coming-next">Start your workout</div>
+	</div>
+	
+	<div id="control"><i class="fa fa-chevron-circle-right pointer" ng-click="$ctrl.startWorkout()"></i></div>
+	
+</div>
+
+
+
+
+
+			<timer interval="1000" countdown="100">{{countdown}}</timer>
+			<button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+			<button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+		
+			<div id="video" ng-hide="$ctrl.video.message == null">
+				<div class="viewer"><img class="img-responsive" src="https://i.ytimg.com/vi/NpEaa2P7qZI/maxresdefault.jpg" /></div>
+				<div class="helper">{{ video.message }}</div>
+			</div>
+			
+			<div id="timer" ng-show="$ctrl.timer.timeLeft > 0">{{ toTimeString(timer.timeLeft) }}</div>
+				
+			<div id="status">
+				<div id="happening-now">Kendorphins Prototype</div>			
+				<div id="coming-next">Start your workout</div>
+			</div>
+			
+			<div id="control"><i class="fa fa-chevron-circle-right pointer" ng-click="startWorkout()"></i></div>
+
+
+
+		<script src="http://siddii.github.io/angular-timer/dist/assets/js/angular-timer-all.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,600,700' rel='stylesheet' type='text/css'>
+		<link href='/stylesheets/prototype.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">

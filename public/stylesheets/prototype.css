@@ -1,0 +1,22 @@
+body	{ background: #000; color: #fff }
+
+
+#status			{ position: absolute; left: 40px; bottom: 42px; font-size: 18px; text-transform: uppercase; }
+#happening-now	{ font-size: 24px; font-weight: bold; }
+#coming-next	{ font-style: italic; }
+#control		{ position: absolute; right: 40px; bottom: 10px; color: #ac1414; font-size: 96px; }
+
+#timer				{ position: absolute; right: 40px; top: 150px; height: 200px; width: 200px; font-size: 80px; text-align: center; font-weight: bold; color: #ac1414; }
+#timer.countdown	{ font-size: 120px; top: 120px !important; }
+
+#next-controls		{ position: absolute; right: 40px; top: 40px; width: 200px; font-size: 160px; text-align: center; font-weight: bold; color: #ac1414; line-height: 1em; }
+
+#video		{ width: 700px; height: 400px; position: relative; }
+.helper		{ width: 620px; top: 36px; left: 40px; text-align: left; position: absolute; line-height: 1.2em; font-size: 48px; font-weight: bold; color: black; }
+
+.finished	{ width: 620px; top: 40px; left: 40px; text-align: center; position: absolute; line-height: 1.2em; font-size: 72px; font-weight: bold; }
+
+.pointer	{ cursor: pointer; }
+.paused		{ color: #ac1414 !important; }
+.pause		{ color: gray !important; }
+
