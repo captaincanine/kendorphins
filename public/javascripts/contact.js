@@ -23,18 +23,6 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 		vm.myRecaptchaResponse = response;
 	}
 	
-	vm.showContact = function() {
-		
-		vm.name = '';
-		vm.email = '';
-		vm.note = '';
-		
-		vm.mode = 'contact';
-				
-		$('#contactModal').modal('show');
-		
-	}
-	
 	vm.showComment = function(type) {
 		
 		vm.name = '';
@@ -43,13 +31,11 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 		vm.type = type;
 		
 		vm.mode = 'comment';
-				
-		$('#commentModal').modal('show');
 		
 	}
 	
-	vm.leaveComment = function() {
-
+	vm.sendComment = function() {
+		
 		var post_data = {  //prepare payload for request
 			'name':vm.name,
 			'email':vm.email,
@@ -58,6 +44,14 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 			'g-recaptcha-response': vm.myRecaptchaResponse  //send g-captcha-response to our server
 		}
 		
+		vm.name = '';
+		vm.email = '';
+		vm.note = '';
+
+		console.log(post_data);
+		vm.mode = 'thanks';
+		return;
+				
 		$http.post('/comment', post_data).success(function(response){
 			
 			if (response.responseCode === 0){
@@ -74,6 +68,8 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 	}
 
   	vm.sendEmail = function() {
+	  	
+	  	vm.type = 'contact';
 	  	
 		var post_data = {  //prepare payload for request
 			'name': vm.name,
