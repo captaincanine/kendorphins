@@ -319,9 +319,11 @@
 						<div class="info">
 							<h3>Press</h3>
 						    {% for article in firebase.press %}
-								<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
-								<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
-								<div class="publisher">@NEWNOWNEXT</div>
+						    	<div class="press-item">
+									<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
+									<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
+									<div class="publisher">@{{ article.publisher }}</div>
+						    	</div>
 							{% endfor %}
 						</div>
 					</div>

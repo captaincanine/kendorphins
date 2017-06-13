@@ -62,6 +62,7 @@ h4 { margin: 1em 0; }
 h1 b	{ font-weight: 800; }
 
 .about		{ font-size: 18px; margin: 20px; }
+.press-item		{ margin: 1em 0; }
 .press-title	{ font-style: normal; font-size: 18px; line-height: 1.2em; font-weight: 400; margin: 8px 0 0; }
 .publisher		{ font-size: 11px; font-weight: 300; margin-top: 6px; }
 .training .description	{ font-size: 15px; }
