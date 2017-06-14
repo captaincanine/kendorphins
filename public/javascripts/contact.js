@@ -47,10 +47,6 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 		vm.name = '';
 		vm.email = '';
 		vm.note = '';
-
-		console.log(post_data);
-		vm.mode = 'thanks';
-		return;
 				
 		$http.post('/comment', post_data).success(function(response){
 			
