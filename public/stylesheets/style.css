@@ -5,6 +5,8 @@ html {
   background-size: cover;
 }
 
+.container	{ padding-bottom: 2em; }
+
 @media (max-width: 320px) {
 	.navbar-brand	{ font-size: 20px !important; }
 	.btn	{ font-size: 12px !important; }
