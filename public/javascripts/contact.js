@@ -63,10 +63,10 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 		
 	}
 
-  	vm.sendEmail = function() {
+	vm.sendEmail = function() {
 	  	
-	  	vm.type = 'contact';
-	  	
+  	vm.type = 'contact';
+  	
 		var post_data = {  //prepare payload for request
 			'name': vm.name,
 			'email': vm.email,
@@ -79,13 +79,13 @@ angular.module('contact', ['vcRecaptcha', 'firebase'])
 			if (response.responseCode === 0){
 				vm.mode = 'thanks';
 			} else {
-				alert("Contact form submission failed.");
+				alert("Oops. There was an error. Please contact kenneth@kendorphins.com");
 			}
 		})
 		.error(function(error){
 		
 		})
-		
-  	}
+
+	}
 
 }]);

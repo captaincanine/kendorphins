@@ -42,8 +42,9 @@ html {
 
 body {
   font: 18px "Open Sans", Helvetica, Arial, sans-serif;
-  color: #000;
+  color: #a6a6a6;
   background: transparent;
+  line-height: 160%;
 }
 
 a 		{ color: #000; }
@@ -53,13 +54,13 @@ a b	{ white-space: nowrap; }
 
 button:focus	{ outline:0 !important; }
 .btn:hover		{ background-color: #adadad !important; }
-.btn[disabled]	{ background-color: #ae2b24 !important; }
+.btn[disabled]	{ background-color: #c92c28 !important; }
 
-a:hover, a:focus		{ color: #ae2b24; }
+a:hover, a:focus		{ color: #c92c28; }
 
 h1 { font-size: 48px; font-weight: 300; text-transform: uppercase; text-align: center; margin: 1em 40px; }
 h2 { font-size: 24px; font-weight: 800; text-transform: uppercase; margin: 2em 0; text-align: center; }
-h3 { font-size: 18px; font-weight: 800; text-transform: uppercase; margin: 2em 0 8px; text-align: left; }
+h3 { font-size: 16px; font-weight: 800; text-transform: uppercase; margin: 2em 0 8px; text-align: left; letter-spacing: 2px; }
 h4 { margin: 1em 0; }
 h1 b	{ font-weight: 800; }
 
@@ -75,7 +76,7 @@ h1 b	{ font-weight: 800; }
 .links h2		{ display: inline; font-weight: 300; letter-spacing: 2px; padding-right: 20px; line-height: 200%; }
 
 .info			{ margin: 40px 40px 60px; }
-.btn			{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; margin: 20px 0; color: #fff !important; background: #ae2b24; }
+.btn			{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; margin: 20px 0; color: #fff !important; background: #c92c28; }
 .info .ban		{ text-align: center; }
 .alert			{ margin-top: 20px; }
 
@@ -115,11 +116,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .section .action	{ font-size: 14px; text-transform: uppercase; text-align: center; }
 .fa-quote-left		{ color: #ccc; }
 
-.bio				{ background: url('/images/floor-background.jpg') !important; }
-.bio .left.piece	{ position: absolute; top: 48px; left: 10%; width: 30%; text-align: left; font-size: 1em; line-height: 1.4em;  }
-.bio .right.piece	{ position: absolute; top: 48px; left: 60%; width: 30%; text-align: left; font-size: 1em; line-height: 1.4em;  }
-.bio .mobile .row	{ padding: 1em 0; }
-
+.bio				{ margin: 0 10%; padding: 40px 0; font-size: 16px; line-height: 180%; }
+.helper			{ font-size: 14px; }
 
 /* FULLPAGE */
 #fullpage			{ color: #1f252a; position: relative; padding-bottom: 0; }
@@ -133,8 +131,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 #fullpage .left.piece		{ position: absolute; top: 10%; left: 10%; width: 10%; text-align: left; font-size: 4em; line-height: 1.1em; }
 
 #fullpage .mobile h1				{ position: absolute; top: 35%; text-align: center; width: 100%; font-size: 2.3em !important; left: 0; }
-#fullpage .mobile .social-links		{ position: absolute; top: 70%; text-align: center; width: 100%; font-size: 80px !important; left: 0; }
-#fullpage .mobile .social			{ display: inline; }
+.x #fullpage .mobile .social-links		{ position: absolute; top: 70%; text-align: center; width: 100%; font-size: 80px !important; left: 0; }
+.x #fullpage .mobile .social			{ display: inline; }
 #fullpage .mobile .locations		{ padding: 10px 10px 40px !important; text-align: center; }
 
 .next-section		{ position: absolute; width: 100%; height: 48px; bottom: 0; background: url('/images/red-divider.png') repeat-x bottom center; }
@@ -148,9 +146,22 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .section .movement	{ margin-top: 2em; }
 .section .logo		{ margin: auto !important; }
 
-.copyright			{ background: #332e2e; }
-.copyright p		{ text-align: center; font-size: 12px; padding-top: 2em; color: #fff; }
+.copyright			{ background: #231f20 !important; }
+.copyright p		{ text-align: center; font-size: 12px; padding-top: 1em; color: #fff; }
 
+.subhead									{ padding: 12px 24px; color: #fff; background: #c92c28; position: relative; margin: 20px; }
+.subhead .left						{ font-size: 30px; font-family: casloncp; }
+.subhead.top .left				{ font-size: 48px; line-height: 180%; }
+.subhead .right						{ position: absolute; top: 25%; right: 24px; }
+.subhead .social					{ display: inline; padding-left: 12px; }
+.subhead .social a				{ color: #fff; font-size: 48px; }
+.subhead .social a:hover	{ color: #a6a6a6; }
+
+.gray			{ background: #a6a6a6; }
+.pale			{ background: #f4f6ed; }
+.spaced		{ margin: 20px 0; }
+.space-fixer	{ margin: 0 5px; }
+.bordered	{ border: 2px solid #231f20; }
 
 /* CHOOSE */
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html ng-app="contact" lang="en">
-    <head>
+	<head>
 	    
-        <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
 		<meta property="og:url"                content="http://kendorphins.com" />
 		<meta property="og:type"               content="website" />
 		<meta property="og:title"              content="{{ firebase.title }}" />
@@ -14,14 +14,15 @@
 		
 		<link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
 
-        <title>{{ firebase.title }}</title>
+		<title>{{ firebase.title }}</title>
 
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,800" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
+		<link href="/fonts/caslon/stylesheet.css" rel="stylesheet" href="/fonts/caslon/stylesheet.css" type="text/css" charset="utf-8" />
 
-        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
@@ -52,328 +53,138 @@
 
 		<div id="fullpage" class="section" class="hidden-xs">
 			
-			<div class="visible-xs mobile">
-
-				<div class="row">
-					<div class="col-xs-12">
-						<img src="/images/kenneth-portrait-dumbbell.jpg" class="img-responsive" />
-						<h1>Kendorphins</h1>
-						<div class="social-links">
-							<div class="social"><a href="https://www.facebook.com/ken.ferrer.946" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></div>
-							<div class="social"><a href="https://www.instagram.com/kendorphins/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
-							<div class="social"><a href="#contact"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></div>
-						</div>
+			<div class="subhead top">
+				<div class="left">kendorphins.</div>
+				<div class="right">
+					<div class="social-links">
+						<div class="social"><a href="https://www.facebook.com/ken.ferrer.946" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></div>
+						<div class="social"><a href="https://www.instagram.com/kendorphins/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+						<div class="social"><a href="#contact"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></div>
 					</div>
 				</div>
-				
-				<div class="row locations">
-					<div class="col-xs-6">
-						<div>available for</div>
-						<div class="location">
-							<a href="#training">
-								<div>Private Training</div>
-								<div class="arrow"><i class="fa fa-chevron-circle-down"></i></div>
-							</a>
-						</div>
-					</div>
-				</div>
-			
 			</div>
 			
-			<img src="/images/kenneth-large-dumbbell.jpg" class="img-responsive hidden-xs" />
-			
-			<div class="top piece hidden-xs">
-				<h1>Kendorphins</h1>
-				<p>That rush you feel when push yourself outside your comfort zone and find your best self.</p>
-			</div>
-			<div class="bottom piece hidden-xs">
-				<div>available for</div>
-				<div class="location">
-					<a href="#training">
-						<div>Private Training</div>
-						<div class="arrow"><i class="fa fa-chevron-circle-down"></i></div>
-					</a>
-				</div>
-				<!--
-				<div>and classes at</div>
-				<div class="location">
-					<a href="#project">
-						<div>Project by Equinox</div>
-						<div class="arrow"><i class="fa fa-chevron-circle-down"></i></div>
-					</a>
-				</div>
-				-->
-			</div>
-			<div class="left piece hidden-xs">
-				<div class="social"><a href="https://www.facebook.com/ken.ferrer.946" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></div>
-				<div class="social"><a href="https://www.instagram.com/kendorphins/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
-				<div class="social"><a href="#contact"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></div>
-			</div>
-			<div class="next-section black"></div>
-		</div>
-		
-		<div class="section black">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 piece">
-						<iframe id="about-video" src="https://player.vimeo.com/video/214968604" width="100%" height="640" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			<div class="row spaced">
+				<div class="col-xs-4">
+					<div class="space-fixer">
+						<img class="img-responsive bordered" src="/images/kenneth-snax.jpg"/>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-12 piece">{{ firebase.instagram_widget | safe }}</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="section bio">
-
-			<div class="container visible-xs mobile">
-				
-				<div class="row">
-					<div class="col-xs-12">
-						<p>Fitness is my favorite way to show people their own power. There is a certain magic that comes from aligning good physical form with good mental form. I’ve seen a lot of people struggle against self-imposed limitations. It’s my goal to help you to kick all those barriers down. I want to show you that you are powerful and limitless.</p>
-						<p>Every workout with me is a feel-good workout. Whether you’re taking a class or a private training session, expect that it will be challenging, but I will never let that challenge defeat you. In being challenged, you find your own source of strength.</p>
-						<div><img src="/images/kenneth-small-dumbbell.jpg" class="img-responsive" /></div>
-						<p>I played in Minor League Baseball for the Washington Nationals and at the collegiate level at Elon University. I was fortunate to train with many people that showed me that my potential was outside my comfort zones. I want to translate that into an experience for you - whether you are a beginner or advanced athlete - whether you work with your hands or at a desk.</p>
-						<p>I want you to find your best self.</p>
-						<p>&mdash; Kenneth Ferrer, New York City</p>
-					</div>
-				</div>
-
-			</div>
-			
-			<div class="hidden-xs">
-				<div><img src="/images/kenneth-bio-background.jpg" class="img-responsive" /></div>
-				
-				<div class="left piece hidden-xs">
-					<p>Fitness is my favorite way to show people their own power. There is a certain magic that comes from aligning good physical form with good mental form. I’ve seen a lot of people struggle against self-imposed limitations. It’s my goal to help you to kick all those barriers down. I want to show you that you are powerful and limitless.</p>
-					<p>Every workout with me is a feel-good workout. Whether you’re taking a class or a private training session, expect that it will be challenging, but I will never let that challenge defeat you. In being challenged, you find your own source of strength.</p>
-				</div>
-				<div class="right piece hidden-xs">
-					<p>I played in Minor League Baseball for the Washington Nationals and at the collegiate level at Elon University. I was fortunate to train with many people that showed me that my potential was outside my comfort zones. I want to translate that into an experience for you - whether you are a beginner or advanced athlete - whether you work with your hands or at a desk.</p>
-					<p>I want you to find your best self.</p>
-					<p>&mdash; Kenneth Ferrer, New York City</p>
-				</div>
-			</div>
-
-			<div class="next-section"></div>
-		</div>
-
-		<div class="section" id="training">
-
-			<div class="container">
-				<div class="row">
-
-				    <div class="col-sm-6"><img src="/images/kenneth-running.jpg" class="img-responsive movement" /></div>
-				    <div class="col-sm-6">
-					    <div class="info">
-						    <h2><img class="img-responsive logo" src="/images/private-training-logo.png" /></h2>
-							<p class="description">{{ firebase.locations.training.description | markdown }}</p>
-							<p align="center"><a type="button" class="btn btn-default btn-lg" href="#contact">Contact Kenneth About <b>Personal Training</b></a></p>
-					    </div>
-				    </div>
-				</div>
-				<div class="row">
-				    <div class="comments">
-					    <div class="col-sm-4 comment" ng-repeat="c in comments.training">
-						    <div class="note"><i class="fa fa-quote-left fa-lg fa-pull-left"></i> {% raw %}{{ c.note }}{% endraw %} </div>
-						    <div class="name">&mdash; {% raw %}{{ c.name }}{% endraw %}</div>
-					    </div>
-				    </div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<p class="action" ng-show="ctrl.mode != 'comment' || ctrl.type != 'training'"><a class="btn" ng-click="ctrl.showComment('training')"><i class="fa fa-lg fa-flip-horizontal fa-fw fa-comment-o"></i> Leave a comment</a></p>
-						
-						<div ng-show="ctrl.mode == 'thanks' && ctrl.type == 'training'" class="alert alert-danger">
-							<div><b>Thanks</b> for leaving a comment.</div>
-						</div>
-
-						<form name="trainingForm" ng-show="ctrl.mode == 'comment' && ctrl.type == 'training'">
-
-							<h3>Leave a comment about {{ firebase.locations.training.name }}</h3>
-							
-							<p>I'll never share your email address with anyone.</p>
-							
-							<div class="form-group">
-								<label for="contactName">Your Name</label>
-								<input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
-							</div>
-							<div class="form-group">
-								<label for="contactEmail">Email address</label>
-								<input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
-							</div>
-							<div class="form-group">
-								<label for="contactNote">Your Comment</label>
-								<textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
-							</div>
-							<div vc-recaptcha key="ctrl.publicKey" ng-model="ctrl.myRecaptchaResponse" on-success="ctrl.setResponse(response)"></div>
-
-							<p class="pull-right">
-								<button type="button" class="btn btn-default" ng-click="ctrl.sendComment()" ng-disabled="trainingForm.$invalid"><i class="fa fa-envelope"></i> Send</button>
-							</p>
-	
-						</form>
-						
-					</div>
+				<div class="col-xs-8">
+					
+					<h3>Why get a coach?</h3>
+					<p>I created my Success Coaching Practice because I believe it is my calling to work with, empower, inspire, and motivate high-potential executives, creatives, and entrepreneurs.</p>
+					<p>I know first-hand how magnificent and vast human potential is; we all have unique and profound gifts, but whether or not we choose to develop and use them is up to us.</p>
+					<p>I help my clients get clear on what they want, set up individualized success plans with emphasis on both tangible and intangible goal-based outcomes, and do both the internal and external work that is required to thrive in their lives.</p>
+					<p>I want to help create a better future for our world by partnering with my clients to discover and cultivate their leadership capabilities. I work with my clients to express their creativity and ability through individual and unique action-plans, to lead with integrity, connectedness, and excellence.</p>
 					
 				</div>
-				
 			</div>
-			<div class="next-section"></div>				
+			
+			<div class="subhead">
+				<div class="left">kenneth’s story.</div>
+			</div>
+			
+			<div class="row spaced">
+				<div class="col-xs-12 ">
+					<div class="space-fixer pale">
+						<div class="bio">
+						<p>For 12 years, I followed a successful path in baseball moving from achievement to achievement. I was a talented and hard working athlete, and my journey took me from Little League all the way up to professional baseball in the MiLB. There always seemed to be a logical next step for me within baseball, but after a long period of dissatisfaction and a feeling of disconnection from myself, I realized that I wanted to pursue something else, and I decided to step away from baseball in 2011. 2011 was a chaotic year&hellip; It started with some high highs and ended with some low lows: I graduated from Elon University, I played in my first season of professional baseball, I came out as gay, I played in my last season of professional baseball, I was disowned, I experienced a painful breakup, and found myself homeless. I essentially went from feeling like I had the world in my hands, to feeling like I had no direction, no purpose, and most notably, no value.</p>
+						<p>During my week-long stint of homelessness, I remember staring out onto the train tracks at the Christopher Street 1 Train Station in New York City, and feeling as if my life was over. I noticed a large New York City rat, the largest I had ever seen, running up the train track with a large piece of food in its mouth. I had an epiphany. I thought: “If this creature of lesser intelligence than I can not only survive, but thrive, under these same conditions that I am in, then what the hell am I doing sitting here feeling sorry for myself?” That rat was the spark that I needed to light the fire that has turned into my burning resolve now. I reached out to a friend for help, and although it was a long-shot, I received it.</p> 
+						<p>I discovered my own personal voice and message teaching in the group fitness industry at Barry’s Bootcamp, Flywheel Sports, and PROJECT by Equinox, while simultaneously starting my own private training business combining fitness, mindset, and spirituality. My private training business evolved into my Success Coaching business, where I combine my BA in Psychology, my experience as a Division 1 College and professional athlete, my training credentials through the National Academy of Sports Medicine, over a decade of spiritual and psychological research, my credentials as a student of the Institute for Performance and Excellence in Coaching, and my experience as an entrepreneur in New York City.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="subhead">
+				<div class="left">why coaching?</div>
+			</div>
 
-		</div>
+			<div class="row spaced">
+				<div class="col-xs-8">
+					<div class="space-fixer">
+					
+					<h3>What is a success coach?</h3>
+					<p>Success Coaching is a powerful fusion of business coaching, life coaching, and health coaching. A Success Coach is a powerful and motivational outcome-based coach that works with their client to increase the quality of their life, and their prosperity within their pursuits. A Success Coaching relationship is built through dialogue, inquiry, action-plans, and accountability, and is based in trust and confidentiality. Kenneth strives to work with his clients to significantly increase the quality of their lives.</p>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="space-fixer">
+						<img class="img-responsive bordered" src="/images/kenneth-hoodie.jpg"/>
+					</div>
+				</div>
+			</div>
 
 <!--
-		<div class="section" id="project">
-
-			<div class="container">
-				<div class="row">
-
-				    <div class="col-sm-6"><img src="/images/kenneth-starjump.jpg" class="img-responsive movement" /></div>
-				    <div class="col-sm-6">
-					    <div class="info">
-						    <h2><img class="img-responsive logo" src="/images/project-logo.png" /></h2>
-							<p class="description">{{ firebase.locations.project.description | markdown }}</p>
-							<p align="center"><a class="btn btn-default" href="{{ firebase.locations.project.url }}" target="_blank">Kenneth's <b>{{ firebase.locations.project.name }}</b> Schedule</a></p>
-					    </div>
-				    </div>
-				</div>
-				<div class="row">
-				    <div class="comments">
-					    <div class="col-sm-4 comment" ng-repeat="c in comments.project">
-						    <div class="note"><i class="fa fa-quote-left fa-lg fa-pull-left"></i> {% raw %}{{ c.note }}{% endraw %} </div>
-						    <div class="name">&mdash; {% raw %}{{ c.name }}{% endraw %}</div>
-					    </div>
-				    </div>
-				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-
-						<p class="action" ng-show="ctrl.mode != 'comment' || ctrl.type != 'project'"><a class="btn" ng-click="ctrl.showComment('project')"><i class="fa fa-lg fa-flip-horizontal fa-fw fa-comment-o"></i> Leave a comment</a></p>
-
-						<div ng-show="ctrl.mode == 'thanks' && ctrl.type == 'project'" class="alert alert-danger">
-							<div><b>Thanks</b> for leaving a comment.</div>
-						</div>
-
-						<form name="projectForm" id="project-form" ng-show="ctrl.mode == 'comment' && ctrl.type == 'project'">
-
-							<h3>Leave a comment about {{ firebase.locations.project.name }}</h3>
-							
-							<p>I'll never share your email address with anyone.</p>
-							
-							<div class="form-group">
-								<label for="contactName">Your Name</label>
-								<input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
-							</div>
-							<div class="form-group">
-								<label for="contactEmail">Email address</label>
-								<input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
-							</div>
-							<div class="form-group">
-								<label for="contactNote">Your Comment</label>
-								<textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
-							</div>
-							<div vc-recaptcha key="ctrl.publicKey" ng-model="ctrl.myRecaptchaResponse" on-success="ctrl.setResponse(response)"></div>
-
-							<p class="pull-right">
-								<button type="button" class="btn btn-default" ng-click="ctrl.sendComment()" ng-disabled="projectForm.$invalid"><i class="fa fa-envelope"></i> Send</button>
-							</p>
-
-						</form>
-						
-
-					</div>
-					
-				</div>				
-				
+			<div class="subhead">
+				<div class="left">work with me</div>
 			</div>
 
-			<div class="next-section"></div>
+			<div class="row spaced">
 
-		</div>
+				<div class="col-xs-4">
+					<div class="space-fixer">
+						<h3>Individual</h3>
+					</div>
+				</div>
+
+				<div class="col-xs-4">
+					<div class="space-fixer">
+						<h3>Group</h3>
+					</div>
+				</div>
+
+				<div class="col-xs-4">
+					<div class="space-fixer">
+						<h3>Online</h3>
+					</div>
+				</div>
+
+			</div>
 -->
 
-		<div class="section">
-			<div class="container">
-				<div class="row">
-
-					<div class="col-md-6">
-						<div class="info">
-							<h3>From <i>Rate Your Burn</i>...</h3>
-							{% for testimonial in firebase.testimonials %}
-							<p>
-								<i class="fa fa-quote-left fa-lg fa-pull-left" aria-hidden="true"></i>
-								<div class="testimonial">{{ testimonial }}</div>
-							</p>
-							{% endfor %}
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="info">
-							<h3>Press</h3>
-						    {% for article in firebase.press %}
-						    	<div class="press-item">
-									<a href="{{ article.url }}" target="_blank"><img src="{{ article.image_url }}" class="img-responsive"></a>
-									<p class="press-title"><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></p>
-									<div class="publisher">@{{ article.publisher }}</div>
-						    	</div>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-
+			<div class="subhead">
+				<div class="left">contact kenneth ::</div>
 			</div>
-			<div class="next-section gray"></div>
-		</div>
-		
-		<div class="section gray" id="contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						
-						<div ng-show="ctrl.mode == 'thanks' && ctrl.type == 'contact'" class="alert alert-danger">
-							<div><b>Thanks</b> for reaching out. I'll get back to you shortly.</div>
-						</div>
 
-						<form name="contactForm" id="contact-form">
-
-							<h3>Contact Kenneth</h3>
-							
-							<p>I'll never share your email address with anyone.</p>
-							
-							<div class="form-group">
-								<label for="contactName">Your Name</label>
-								<input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
-							</div>
-							<div class="form-group">
-								<label for="contactEmail">Email address</label>
-								<input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
-							</div>
-							<div class="form-group">
-								<label for="contactNote">Note (optional)</label>
-								<textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
-							</div>
-							<div vc-recaptcha key="ctrl.publicKey" ng-model="ctrl.myRecaptchaResponse" on-success="ctrl.setResponse(response)"></div>
-						
-							<p>
-								<button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid"><i class="fa fa-envelope"></i> Send</button>
-							</p>
-
-						</form>
-
-					</div>
+			<div class="row" id="contact">
+				<div class="col-md-8 col-md-offset-2">
 					
-				</div>
-			
-			</div>
+					<div ng-show="ctrl.mode == 'thanks' && ctrl.type == 'contact'" class="alert alert-danger">
+						<div><b>Thanks</b> for reaching out. I'll get back to you shortly.</div>
+					</div>
 
-			<div class="next-section black"></div>
-		</div>
+					<form name="contactForm" id="contact-form">
+						
+						<p class="helper">I'll never share your email address with anyone.</p>
+						
+						<div class="form-group">
+							<label for="contactName">Your Name</label>
+							<input type="text" class="form-control" id="person" name="name" placeholder="required" ng-model="ctrl.name" required>
+						</div>
+						<div class="form-group">
+							<label for="contactEmail">Email address</label>
+							<input type="email" class="form-control" id="contactEmail" name="email" placeholder="required" ng-model="ctrl.email" required>
+						</div>
+						<div class="form-group">
+							<label for="contactNote">Note (optional)</label>
+							<textarea id="contactNote" rows="3" class="form-control" ng-model="ctrl.note"></textarea>
+						</div>
+						<div vc-recaptcha key="ctrl.publicKey" ng-model="ctrl.myRecaptchaResponse" on-success="ctrl.setResponse(response)"></div>
+					
+						<p>
+							<button type="button" class="btn btn-default" ng-click="ctrl.sendEmail()" ng-disabled="contactForm.$invalid"><i class="fa fa-envelope"></i> Send</button>
+						</p>
+
+					</form>
+
+				</div>				
+			</div>
 		
-		<div class="section copyright">
+		<div class="subhead copyright">
 			<p>&copy; kendorphins</p>
 		</div>
 
-    </body>
+  </body>
 </html>
