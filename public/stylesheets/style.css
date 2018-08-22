@@ -11,12 +11,12 @@ html {
 	.navbar-brand	{ font-size: 20px !important; }
 	.btn	{ font-size: 12px !important; }
 	.info	{ margin: 1em 0 !important; }
-	h2		{ margin-top: 0 !important; font-size: 18px; }
-	#about-video					{ height: 140px; }
+	.right	{ position: relative !important; }
 }
 
 @media (max-width: 480px) {
 	.navbar .container-fluid		{ padding: 8px 20px !important; }
+	.right	{ position: relative !important; }
 }
 
 @media (max-width: 768px) {
