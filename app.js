@@ -211,19 +211,19 @@ app.post('/contact', function(req, res) {
 			}
 			
 			// SEND EMAIL
-		    var transporter = nodemailer.createTransport("smtps://admin%40kendorphins.com:PlHeLeHe@smtp.gmail.com");
-		    
+	    var transporter = nodemailer.createTransport("smtps://admin%40kendorphins.com:PlHeLeHe@smtp.gmail.com");
+	    
 		    // setup e-mail data with unicode symbols
 			var mailOptions = {
 			    from: 		'admin@kendorphins.com', // sender address
-			    to: 		ADMIN_EMAIL, // list of receivers
+			    to: 			ADMIN_EMAIL, // list of receivers
 			    subject: 	'You have a message from kendorphins.com', // Subject line
 			    html: 		'<p>You have a message from kendorphins.com. The following person filled out the contact form:</p><blockquote><p>name: <b>' + req.body.name + '</b></p><p>email: <b><a href="mailto:' + req.body.email + '">' + req.body.email + '</a></b></p><p>note: <b>' + req.body.note + '</b></p></blockquote>' // html body
 			};
-			
+		
 			// send mail with defined transport object
 			transporter.sendMail(mailOptions, function(error, info){
-
+	
 			    if (error) {
 			        console.log(error);
 			    } else {
@@ -271,5 +271,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+console.log('Working in environment:', process.env.NODE_ENV);
 
 module.exports = app;
