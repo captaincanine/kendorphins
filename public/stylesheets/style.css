@@ -183,6 +183,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .fix-both			{ margin: 20px 5px; }
 .fix-bottom		{ margin-bottom: 20px; }
 
+.more-info		{ line-height: 150%; }
+
 /* CHOOSE */
 
 #choose				{ background: #aa251f; }
