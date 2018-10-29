@@ -64,7 +64,7 @@ app.use('/prototype', function(req, res) {
 	res.render('prototype');
 });
 
-app.use('/one-month-resolution', function(req, res) {
+app.use('/kickstart-your-resolutions', function(req, res) {
 	res.render('webinar');
 });
 
