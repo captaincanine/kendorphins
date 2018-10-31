@@ -13,6 +13,8 @@ html {
 	.info	{ margin: 1em 0 !important; }
 	.right	{ position: relative !important; }
 	.bio		{ padding: 0 !important; }
+	#fullpage	{ padding: 0 !important; }
+	.webinar	{ padding: 0 !important; }
 }
 
 @media (max-width: 480px) {
@@ -20,6 +22,8 @@ html {
 	.right	{ position: relative !important; }
 	.bio		{ padding: 0 !important; margin: 0 !important; }
 	.container-fluid						{ padding: 0 !important; }
+	#fullpage	{ padding: 0 !important; }
+	.webinar	{ padding: 0 !important; }
 }
 
 @media (max-width: 768px) {
@@ -212,7 +216,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 
 .network-logos		{ list-style-type: none; }
 .network-logos li	{ display: inline; }
-.network-logo			{ max-height: 60px; margin: 20px 30px 0 0; }
+.network-logo			{ max-height: 50px; margin: 20px 30px 0 0; }
 .network-logo.cw	{ padding: 15px 0; }
 
 
