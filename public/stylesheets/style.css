@@ -5,7 +5,13 @@ html {
   background-size: cover;
 }
 
-.container	{ padding-bottom: 2em; }
+@font-face {
+  font-family: 'woodfordbourne-bold';
+  src: url('/fonts/woodford/woodfordbourne-bold-webfont.woff2') format('woff2'),
+       url('/fonts/woodford/woodfordbourne-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @media (max-width: 320px) {
 	.navbar-brand	{ font-size: 20px !important; }
@@ -27,6 +33,13 @@ html {
 	.webinar .textbox		{ font-size: 16px !important; line-height: 150% !important; padding: 20px 10px !important; }
 	.webinar h3					{ letter-spacing: 0; text-align: center; font-size: 14px !important; }
 	.webinar h3	a				{ }
+	
+	header .social		{ width: 100%; padding-top: 12px; }
+	section .redbox								{ padding: 10px !important; }
+	section .greybox							{ padding: 10px !important; }
+	section .redbox .signup-link	{ font-size: 18px !important; }
+	section h3										{ margin: 2em 0 0; }
+	#kenneths-story h3						{ margin: 2em 0 1em; }
 }
 
 @media (max-width: 768px) {
@@ -51,13 +64,16 @@ html {
 
 
 body, #mc_embed_signup {
-  font: 18px "Open Sans", Helvetica, Arial, sans-serif !important;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   color: #111 !important;
   background: #fff;
-  // background: #982b2b;
+  // background: #a53737;
   line-height: 160% !important;
   font-weight: 400 !important;
 }
+
+#mc_embed_signup { background-color: #e5e5e5 !important; }
+
 
 a 		{ color: #000; }
 .action a:hover	{ text-decoration: none; cursor: pointer; }
@@ -67,13 +83,13 @@ a.silent	{ color: inherit; text-decoration: none; }
 
 button:focus	{ outline:0 !important; }
 .btn:hover		{ background-color: #adadad !important; }
-.btn[disabled]	{ background-color: #982b2b !important; }
-a:hover, a:focus		{ color: #982b2b; }
+.btn[disabled]	{ background-color: #a53737 !important; }
+a:hover, a:focus		{ color: #a53737; }
 
 h1 { font-size: 48px; font-weight: 300; text-transform: uppercase; text-align: center; margin: 1em 40px; }
-h2 { font-size: 24px; font-weight: 800; text-transform: uppercase; margin: 1em 0; text-align: center; }
-h3 { font-size: 16px; font-weight: 800; text-transform: uppercase; text-align: left; letter-spacing: 2px; margin-top: 0; }
-h4 { margin: 1em 0; }
+h2 { font-size: 24px; text-transform: uppercase; margin: 1em 0; text-align: center; font-family: "woodfordbourne-bold"; }
+h3 { font-size: 20px; text-transform: uppercase; text-align: left; letter-spacing: 1px; margin-top: 0; font-family: "woodfordbourne-bold"; }
+h4 { font-size: 18px; text-transform: none; text-align: left; letter-spacing: 0px; margin-top: 6px; font-family: "woodfordbourne-bold"; }
 h1 b	{ font-weight: 800; }
 
 .about		{ font-size: 18px; margin: 20px; }
@@ -88,7 +104,7 @@ h1 b	{ font-weight: 800; }
 .links h2		{ display: inline; font-weight: 300; letter-spacing: 2px; padding-right: 20px; line-height: 200%; }
 
 .info			{ margin: 40px 40px 60px; }
-.btn			{ font-size: 14px; text-transform: uppercase; letter-spacing: 1px; white-space: normal; margin: 20px 0; color: #fff !important; background: #982b2b; }
+.btn			{ text-transform: uppercase; font-family: "woodfordbourne-bold"; white-space: normal; margin: 20px 0; color: #fff !important; background: #a53737; }
 .info .ban		{ text-align: center; }
 .alert			{ margin-top: 20px; }
 
@@ -147,6 +163,36 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .x #fullpage .mobile .social					{ display: inline; }
 #fullpage .mobile .locations					{ padding: 10px 10px 40px !important; text-align: center; }
 
+header									{ background-color: #a53737; padding: 40px 0 40px; border-bottom: #332e2e 2px solid;}
+header .logo						{ max-width: 343px; }
+header .social					{ display: flex; align-items: flex-end; justify-content: flex-end; }
+header .social a				{ color: #fff !important; font-size: 42px; padding-left: 12px; }
+header .social a:hover	{ color: #231f20; }
+header .social-link			{ display: flex; align-self: flex-start; }
+
+footer									{ background-color: #a53737; padding: 40px 0 10px; color: #fff; font-family: "woodfordbourne-bold"; border-top: #332e2e 2px solid}
+
+section									{ margin: 20px auto; }
+section .greybox				{ background-color: #e5e5e5; padding: 40px; }
+section .charcoalbox		{ background-color: #231f20; padding: 40px; color: #fff; }
+section .redbox					{ background-color: #a53737; padding: 40px; color: #fff; }
+section .redbox h2			{ font-size: 42px; }
+section .redbox a				{ color: #fff; }
+section .redbox a:hover	{ color: #e5e5e5; }
+section .redbox video		{ margin: 12px 0; }
+section .redbox .signup-link	{ text-align: center; font-family: "woodfordbourne-bold"; font-size: 36px; padding: 12px 0; }
+section .fa-newspaper		{ font-size: 80px; padding: 20px 0; }
+section .news-item			{ background-color: #e5e5e5; margin: 6px; }
+section .news-item p		{ font-size: 14px; margin-bottom: 12px; }
+
+.page-webinar h3				{ margin: 1em 0; }
+
+.img-head-heart					{ max-width: 100px; margin: 1em 0; }
+#kenneth-story h3				{ margin-bottom: 1em; }
+.call-to-action .btn-lg,
+#kickstart .btn-lg			{ font-family: "woodfordbourne-bold"; font-size: 36px; border-width: 2px; background-color: #e5e5e5; border-color: #332e2e !important; color: #332e2e !important; }
+
+
 .next-section		{ position: absolute; width: 100%; height: 48px; bottom: 0; background: url('/images/red-divider.png') repeat-x bottom center; }
 .next-section.black	{ background: url('/images/red-divider-black.png') repeat-x bottom center; }
 .next-section.gray	{ background: url('/images/red-divider-gray.png') repeat-x bottom center; }
@@ -158,15 +204,17 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 .section .movement	{ margin-top: 2em; }
 .section .logo			{ margin: auto !important; }
 
-.copyright			{ background: #982b2b !important; }
+.copyright			{ background: #a53737 !important; }
 .copyright p		{ text-align: center; font-size: 12px; padding-top: 1em; color: #fff; }
 
-.subhead									{ padding: 12px 24px; color: #982b2b; background: #fff; border: 2px solid #982b2b; x-background: #982b2b; position: relative; margin: 20px; }
+.subhead									{ padding: 12px 24px; color: #a53737; background: #fff; border: 2px solid #a53737; x-background: #a53737; position: relative; margin: 20px; }
 .subhead .left						{ font-size: 30px; font-family: casloncp; }
+.subhead.top							{ background-color: #a53737; border: none; }
+.subhead .logo						{ max-width: 343px; text-align: left; }
 .subhead.top .left				{ font-size: 48px; line-height: 180%; }
 .subhead .right						{ position: absolute; top: 25%; right: 24px; }
 .subhead .social					{ display: inline; padding-left: 12px; }
-.subhead .social a				{ color: #982b2b; font-size: 48px; }
+.subhead .social a				{ color: #a53737; font-size: 48px; }
 .subhead .social a:hover	{ color: #231f20; }
 
 .row					{ display: flex; flex-wrap: wrap; }
@@ -186,7 +234,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 
 .gray					{ background: #f1f1f1; }
 .pale					{ background: #f1f1f1; height: 100%; color: #111; }
-.black				{ background: #982b2b; height: 100%; color: #f1f1f1; }
+.black				{ background: #a53737; height: 100%; color: #f1f1f1; }
 .spaced				{ margin: 20px 0; }
 .space-fixer	{ margin: 0 5px; }
 .bordered			{ border: 2px solid #231f20; margin: 0 4px; }
@@ -229,18 +277,28 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill		{ ba
 #webinar .footer	{ max-width: 800px; }
 #webinar h3				{ font-size: 24px; font-style: italic; font-weight: 500; text-align: left; text-transform: none; letter-spacing: 1px; line-height: 150%; }
 
-#webinar .webinar-info			{ margin: 40px 0; }
-#webinar .time							{ font-weight: bold; font-size: 28px; margin: 8px 0 20px; }
-#webinar .dates							{ font-weight: bold; font-size: 24px; margin: 8px 0 20px; line-height: 120%; }
-#webinar .cost							{ font-weight: bold; font-size: 28px; margin: 8px 0 20px; }
+.page-webinar .webinar-info			{ margin: 40px 0; }
+.page-webinar .time							{ font-weight: bold; font-size: 28px; margin: 4px 0 20px; }
+.page-webinar .dates							{ font-weight: bold; font-size: 24px; margin: 4px 0 20px; line-height: 120%; }
+.page-webinar .cost							{ font-weight: bold; font-size: 28px; margin: 4px 0 20px; }
 
-#webinar button		{ font-weight: bold; font-size: 32px; padding: 20px; }
-#webinar h1				{ font-weight: bold; font-size: 42px; margin: 0 !important; }
-#webinar h2				{ font-weight: 500; font-size: 24px; margin: 0 0 20px !important; text-transform: none; }
+.page-webinar button		{ font-weight: bold; font-size: 32px; padding: 20px; border: 3px solid #fff; }
 
-#webinar .call-to-action	{ font-weight: 700; font-size: 28px; line-height: 120%; }
-#webinar .call-to-action .btn	{ font-size: 32px; }
-#webinar .call-to-action i		{ margin: 8px 0; }
+.page-webinar .call-to-action	{ font-weight: 700; font-size: 28px; line-height: 120%; }
+.page-webinar .call-to-action .btn	{ font-size: 32px; border-width: 3px; font-family: "woodfordbourne-bold"; line-height: 120%; padding: 20px 40px; }
+.page-webinar .call-to-action i		{ margin: 8px 0; }
+
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 
 /* INVITE */
 
