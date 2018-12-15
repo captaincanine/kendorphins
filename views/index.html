@@ -182,12 +182,39 @@
 							
 							</div>
 
-							<div class="col-sm-2  hidden-md hidden-lg" align="center"><img src="/images/head-w-heart-red.png" class="img-responsive img-head-heart"/></div>
+							<div class="col-sm-2 hidden-md hidden-lg" align="center"><img src="/images/head-w-heart-red.png" class="img-responsive img-head-heart"/></div>
 
 						</div>
 					</div>
 				</div>
 			</section>
+			
+			
+			<!-- MINDSET -->
+			<section>
+				<div class="container">
+					<div class="row greybox">
+						<div class="col-sm-8 col-sm-offset-2 col-xs-12">
+							
+							<div class="col-sm-10">
+
+								<h3>weekly mindset ::</h3>
+								
+								<p class="mindset">
+									{% set m = firebase.mindsets | last %}
+									{{ m.mindset }}
+								</p>
+								
+							</div>
+							
+							<div class="col-sm-2 hidden-xs hidden-sm flex-wrapper" align="center"><img src="/images/brain-rewire.png" class="img-responsive img-head-heart"/></div>
+							<div class="col-sm-2 hidden-md hidden-lg" align="center"><img src="/images/brain-rewire.png" class="img-responsive img-head-heart"/></div>
+						
+						</div>
+					</div>
+				</div>
+			</section>
+
 			
 			<!-- IN THE NEWS -->
 			<section>
@@ -281,7 +308,7 @@
 			</section>
 
 			<footer>
-				<div class="container">&copy; kendorphins</div>
+				<div class="container">&copy; KENDORPHINS</div>
 			</footer>
 
   </body>
