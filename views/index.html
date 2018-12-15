@@ -16,7 +16,8 @@
 
 		<title>Kenneth Ferrer - NYC Success Coach</title>
 
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!--		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,800" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 		<link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
@@ -72,8 +73,8 @@
 			<header>
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-9"><img src="/images/kendorphins-infinity-logo.png" class="logo" /></div>
-						<div class="col-sm-3 social">
+						<div class="col-sm-8"><img src="/images/kendorphins-infinity-logo.png" class="logo" /></div>
+						<div class="col-sm-4 social">
 							<span class="social-link"><a href="https://www.facebook.com/ken.ferrer.946" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i></a></span>
 							<span class="social-link"><a href="https://www.instagram.com/kendorphins/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></span>
 							<span class="social-link"><a href="#contact"><i class="fa fa-envelope-square" aria-hidden="true"></i></a></span>
@@ -225,18 +226,28 @@
 						</div>
 					</div>
 					<div class="row greybox rounded-bottom">
-		
+								
 						{% for key, val in firebase.press|reverse %}
 							{% set item = firebase.press[val] %}
-								<div class="col-sm-4"><div class="news-item">
-									{% if item.type == 'video' %}
-										<video class="movie" src="{{ item.src }}" controls></video>
-									{% else %}
-										<div><a href="{{ item.url }}" target="_blank"><img src="{{ item.image_url }}" class="img-responsive"/></a></div>
-									{% endif %}				
-									<h4><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></h4>
-									<p class="more-info">{{ item.description | raw }}</p>
-								</div></div>
+														
+								{% if loop.first %}<div class="container-fluid">
+								{% elseif loop.index0 % 3 == 0 %}<div class="container-fluid">{% endif %}
+							
+									<div class="col-sm-4">
+									<div class="news-item">
+										{% if item.type == 'video' %}
+											<video class="movie" src="{{ item.src }}" controls></video>
+										{% else %}
+											<div><a href="{{ item.url }}" target="_blank"><img src="{{ item.image_url }}" class="img-responsive"/></a></div>
+										{% endif %}				
+										<h4><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></h4>
+										<p class="more-info">{{ item.description | raw }}</p>
+									</div>
+									</div>
+								
+								{% if loop.last %}</div>
+								{% elseif loop.index0 % 3 == 2 %}</div>{% endif %}
+								
 						{% endfor %}
 
 					</div>
@@ -310,6 +321,6 @@
 			<footer>
 				<div class="container">&copy; KENDORPHINS</div>
 			</footer>
-
+			
   </body>
 </html>
