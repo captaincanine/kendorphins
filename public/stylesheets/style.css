@@ -185,9 +185,11 @@ section .fa-newspaper		{ font-size: 80px; padding: 20px 0; }
 section .news-item			{ background-color: #e5e5e5; margin: 6px; }
 section .news-item p		{ font-size: 14px; margin-bottom: 12px; }
 
-section	.rounded					{ border-radius: 10px; }
-section .rounded-top			{ border-top-left-radius: 10px; border-top-right-radius: 10px; }
-section .rounded-bottom		{ border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+@media (min-width: 768px) {
+	section	.rounded					{ border-radius: 10px; }
+	section .rounded-top			{ border-top-left-radius: 10px; border-top-right-radius: 10px; }
+	section .rounded-bottom		{ border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
+}
 
 .page-webinar h3				{ margin: 1em 0; }
 
