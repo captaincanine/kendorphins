@@ -174,7 +174,7 @@ footer									{ background-color: #a53737; padding: 40px 0 10px; color: #fff; f
 
 section									{ margin: 20px auto; }
 section .greybox				{ background-color: #e5e5e5; padding: 40px; }
-section .charcoalbox		{ background-color: #231f20; padding: 40px; color: #fff; }
+section .charcoalbox		{ background-color: #2c2c50; padding: 40px; color: #fff; }
 section .redbox					{ background-color: #a53737; padding: 40px; color: #fff; }
 section .redbox h2			{ font-size: 42px; }
 section .redbox a				{ color: #fff; }
@@ -184,6 +184,10 @@ section .redbox .signup-link	{ text-align: center; font-family: "woodfordbourne-
 section .fa-newspaper		{ font-size: 80px; padding: 20px 0; }
 section .news-item			{ background-color: #e5e5e5; margin: 6px; }
 section .news-item p		{ font-size: 14px; margin-bottom: 12px; }
+
+section	.rounded					{ border-radius: 10px; }
+section .rounded-top			{ border-top-left-radius: 10px; border-top-right-radius: 10px; }
+section .rounded-bottom		{ border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
 
 .page-webinar h3				{ margin: 1em 0; }
 
